@@ -30,6 +30,6 @@ In the HA over iHost project, the iHost Hardware Control Add-on is used to manag
 - Open the add-on's **Configuration** tab.
 - Enter your Mosquitto broker details:
   ```yaml
-  url: "mqtt://your-broker-address"  # Replace with your broker URL
+  server: "mqtt://your-broker-address"  # Replace with your broker URL
   username: "your_username"          # If authentication is enabled
   password: "your_password"
