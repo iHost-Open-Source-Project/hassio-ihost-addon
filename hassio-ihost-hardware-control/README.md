@@ -8,13 +8,13 @@ Controlling iHost buttons and indicators in Home Assistant
 
 iHost Hardware Control add-on registers buttons and indicators on the iHost as entities in Home Assistant, allowing users to configure automation rules for button and indicator entities directly in Home Assistant for more flexible control of hardware interactions.
 
-#### Prerequisites 
+## Prerequisites 
 
 Booting and running Home Assistant on iHost via a pre-flashed microSD card is required to use the iHost Hardware Control add-on, See the Operation Guide for more details. 
 
-#### How to use
+## How to use
 
-See “Document” for details on how to use the iHost Hardware Control add-on.
+See “Documentation” for details on how to use the iHost Hardware Control add-on.
 
 ![img](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-hardware-control/images/buttons_device.png)
 
