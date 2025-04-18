@@ -28,7 +28,7 @@
         }
     ],
     "options": {
-        "data_path": "/config/iHost-Hardware-control",
+        "data_path": "/config/iHost-Hardware-Control",
         "mqtt": {}
     },
     "schema": {
