@@ -35,11 +35,11 @@ Home Assistant Operating System must be running on iHost via an SD card to use t
 
 1. Search for **SONOFF Dongle Flasher for iHost** in the Add-ons Store.
 
-![](./images/find_addon.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/find_addon.png)
 
 2. Click **Install**.
 
-![](./images/install_button.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/install_button.png)
 
 3. Wait for the installation to complete.
 
@@ -47,7 +47,7 @@ Home Assistant Operating System must be running on iHost via an SD card to use t
 
 After installation, click **Start** to launch the add-on. Wait until the service has fully started before proceeding.
 
-![](./images/start_button.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/start_button.png)
 
 ## Flashing Zigbee NCP Firmware to iHost MG21
 
@@ -55,17 +55,17 @@ After installation, click **Start** to launch the add-on. Wait until the service
 
 Ensure the **Zigbee2MQTT** and **ZHA** are stopped, as flashing requires access to the serial port. If the add-on detects that the serial port is occupied by Zigbee2MQTT or ZHA, it will automatically stop the corresponding service.
 
-![](./images/open_web_ui.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/open_web_ui.png)
 
-![](./images/connect.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/connect.png)
 
 Wait until the connection to iHost is successfully established.
 
-![](./images/connect_loading.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/connect_loading.png)
 
 2. Connection Failure
 
-![](./images/connect_failed.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/connect_failed.png)
 
 Flashing firmware requires access to the serial port. During the flashing process, the add-on will automatically disable ZHA and Zigbee2MQTT. Please note that Zigbee devices will be unavailable until the flashing process is complete.  
 If the connection fails, possible causes include:
@@ -94,20 +94,20 @@ _Note\*:_
 
 _For more details, refer to the GitHub Discussions:_ [_How to upgrade/migrate ZBDongle-E from 6.x firmware to 7.4?_](https://github.com/Koenkk/zigbee2mqtt/discussions/22919)
 
-![](./images/change_firmware.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/change_firmware.png)
 
-![](./images/apply_image.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/apply_image.png)
 
 Click **Flash** to start flashing the firmware.
 **Do not** power off or reboot iHost during process.
-![](./images/flash_addon.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/flash_addon.png)
 
-![](./images/continue_flash.png)  
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/continue_flash.png)  
 Wait for the flashing process to complete.
 
-![](./images/flashing.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/flashing.png)
 
-![](./images/flash_hint.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/flash_hint.png)
 
 After the flashing process completes, you can restart the **ZHA** or **Zigbee2MQTT** services.
 
