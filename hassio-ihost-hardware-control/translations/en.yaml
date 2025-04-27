@@ -1,0 +1,10 @@
+---
+configuration:
+  data_path:
+    name: data_path
+    description: >-
+      Use this folder to store your add-on data. Note: The folder path must be created within the /config/ directory.
+  mqtt:
+    name: MQTT
+    description: >-
+      For the MQTT service configuration, you can customize the "server", "username", and "password" settings.
