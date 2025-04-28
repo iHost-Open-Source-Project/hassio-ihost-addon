@@ -1,8 +1,8 @@
 # SONOFF Dongle Flasher For iHost
 
-**Note:**
+**_Note:_**
 
-**During the connection and firmware burning process, please do not restart, power off, or exit the current page, which may cause some unknown errors and make the iHost's onboard MG21 chip unusable!!!**
+**_Please remain on this page and avoid rebooting or powering off your iHost during connection establishment and Zigbee NCP firmware flashing for the onboard iHost MG21 module. Interruptions may cause unexpected errors and may render the onboard MG21 Zigbee module unusable._**
 
 ## Preview
 
@@ -10,7 +10,7 @@
 
 ## Prerequisite
 
-Home Assistant Operating System must be running on iHost via an SD card to use this add-on. **SONOFF Dongle Flasher for iHost** add-on is specifically designed for use with the "**HA over iHost**" project, allowing users to update the onboard MG21 Zigbee firmware. [How to run Home Assistant Operating System on iHost?](https://github.com/iHost-Open-Source-Project/ha-operating-system?tab=readme-ov-file#readme)
+Home Assistant Operating System must be running on iHost via an SD card to use this add-on. **SONOFF Dongle Flasher for iHost** add-on is specifically designed for use with the "**HA over iHost**" project, allowing users to update the onboard MG21 Zigbee firmware. Learn [How to run Home Assistant Operating System on iHost?](https://github.com/iHost-Open-Source-Project/ha-operating-system?tab=readme-ov-file#readme)
 
 ## How to Install _SONOFF Dongle Flasher for iHost_ Add-on?
 
@@ -23,7 +23,7 @@ Home Assistant Operating System must be running on iHost via an SD card to use t
 
 #### Via Button Clicking
 
-- Click the button **ADD ADD-ON REPOSITORY TO** to add the add-on automatically.
+- Click the **Add Repository** button to add the add-on automatically.
 
 [![Add Repository](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FiHost-Open-Source-Project%2Fhassio-ihost-addon)
 
