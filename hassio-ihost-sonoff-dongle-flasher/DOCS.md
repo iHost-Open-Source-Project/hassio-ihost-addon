@@ -25,7 +25,7 @@ Home Assistant Operating System must be running on iHost via an SD card to use t
 
 - Click the button **ADD ADD-ON REPOSITORY TO** to add the add-on automatically.
 
-![](https://cdn.nlark.com/yuque/0/2025/png/21644839/1744203702524-79f16382-37c9-44e3-86cc-dba053f7dce3.png)
+[![Add Repository](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FiHost-Open-Source-Project%2Fhassio-ihost-addon)
 
 #### Automatic Repository Detection
 
