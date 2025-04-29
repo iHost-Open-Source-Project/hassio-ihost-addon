@@ -6,15 +6,16 @@
 
 ## Preview
 
-**SONOFF Dongle Flasher for iHost** add-on enables online flashing of Zigbee NCP firmware for the onboard iHost MG21 module.Currently available firmware versions: V6.10.3, V7.4.1, V7.4.3, V7.4.4.
+**_SONOFF Dongle Flasher for iHost_** add-on enables online flashing of Zigbee NCP firmware (currently available versions: V6.10.3, V7.4.1, V7.4.3, and V7.4.4) to iHost's onboard MG21 Zigbee module.
 
 ## Prerequisite
 
-Home Assistant Operating System must be running on iHost via an SD card to use this add-on. **SONOFF Dongle Flasher for iHost** add-on is specifically designed for use with the "**HA over iHost**" project, allowing users to update the onboard MG21 Zigbee firmware. Learn [How to run Home Assistant Operating System on iHost?](https://github.com/iHost-Open-Source-Project/ha-operating-system?tab=readme-ov-file#readme)
+Home Assistant Operating System **MUST** be running on iHost via an SD card to use this add-on. **SONOFF Dongle Flasher for iHost** add-on is specifically designed for use with the "**HA over iHost**" project, allowing users to update the onboard MG21 Zigbee firmware. Learn [How to run Home Assistant Operating System on iHost?](https://github.com/iHost-Open-Source-Project/ha-operating-system?tab=readme-ov-file#readme)
 
 ## How to Install _SONOFF Dongle Flasher for iHost_ Add-on?
 
-### Add to Repository
+### **Add SONOFF Dongle Flasher for iHost Add-on to Repositories**
+**Skip** this step and simply proceed to the **Add-on Store** to install the required add-on if you have already added the add-ons from this repository (e.g. **iHost Hardware Control**).  
 
 #### Via URL
 
@@ -86,7 +87,7 @@ _Note\*:_
 
 - _If you plan to roll back to the eWeLink CUBE system after running Home Assistant Operating System, you must first downgrade to **Zigbee 6.10.9** firmware. Otherwise, you may encounter data loss or compatibility issues._
 - _For firmware updates directly to **version 7.4 or later**, configure Zigbee2MQTT to use the adapter - **ezsp**, on initial startup._
-- _Do not start directly with the adapter: **ember**. Change driver to **ember** after successfully starting Zigbee2MQTT with the **ezsp** driver. **Otherwise, you may encounter the following critical issues:**_
+- _**Do not** start directly with the adapter: **ember**. Change driver to **ember** after successfully starting Zigbee2MQTT with the **ezsp** driver. **Otherwise, you may encounter the following critical issues:**_
 
 - _Zigbee2MQTT may report an error message:_
   _"Current backup file is from an unsupported EZSP version."_
@@ -114,7 +115,7 @@ After the flashing process completes, you can restart the **ZHA** or **Zigbee2MQ
 _Note\*:_
 
 - _For firmware updates directly to **version 7.4 or later**, configure Zigbee2MQTT to use the adapter - **ezsp**, on initial startup._
-- _Do not start directly with the adapter: **ember**. Change driver to **ember** after successfully starting Zigbee2MQTT with the **ezsp** driver. **Otherwise, you may encounter the following critical issues:**_
+- _**Do not** start directly with the adapter: **ember**. Change driver to **ember** after successfully starting Zigbee2MQTT with the **ezsp** driver. **Otherwise, you may encounter the following critical issues:**_
 
 - _Zigbee2MQTT may report an error message:_
    _"Current backup file is from an unsupported EZSP version."_
