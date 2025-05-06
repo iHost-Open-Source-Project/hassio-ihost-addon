@@ -14,24 +14,6 @@ Home Assistant Operating System **MUST** be running on iHost via an SD card to u
 
 ## How to Install _SONOFF Dongle Flasher for iHost_ Add-on?
 
-### **Add SONOFF Dongle Flasher for iHost Add-on to Repositories**
-**Skip** this step and simply proceed to the **Add-on Store** to install the required add-on if you have already added the add-ons from this repository (e.g. **iHost Hardware Control**).  
-
-#### Via URL
-
-- Navigate to **Settings** **>** **Add-on Store>** **Click the three-dot menu (⋮) in the top right corner and select Repositories**.
-- Enter the repository URL into the input box: [https://github.com/iHost-Open-Source-Project/hassio-ihost-addon](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon)
-
-#### Via Button Clicking
-
-- Click the **Add Repository** button to add the add-on automatically.
-
-[![Add Repository](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FiHost-Open-Source-Project%2Fhassio-ihost-addon)
-
-#### Automatic Repository Detection
-
-- If you have already added other add-ons from this repository (e.g., **iHost Hardware Control**), **skip** this step, and simply proceed to the **Add-ons Store** to install the required add-on.
-
 ### Install _SONOFF Dongle Flasher for iHost_ Add-on
 
 1. Search for **SONOFF Dongle Flasher for iHost** in the Add-ons Store.
