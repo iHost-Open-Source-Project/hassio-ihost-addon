@@ -1,71 +1,56 @@
-# iHost Hardware Control  Add-on
+# Hassio iHost Add-ons
 
-#### Introduction 
+## About
+This repository contains a set of Home Assistant add-ons developed specifically for **SONOFF iHost**.
 
-iHost Hardware Control add-on registers buttons and indicators on the iHost as entities in Home Assistant, allowing users to configure automation rules for button and indicator entities directly in Home Assistant for more flexible control of hardware interactions.
+## Requirements
+To use these add-ons, Home Assistant must be running on iHost from a pre-flashed microSD card.  
+Please refer to the [Operation Guide](https://github.com/iHost-Open-Source-Project/ha-operating-system?tab=readme-ov-file#readme) for setup instructions.
 
-#### Prerequisites 
-
-- Booting and running Home Assistant on iHost via a pre-flashed microSD card is required to use the **iHost Hardware Control** add-on, as it enables iHost's button and indicator functions. See the [Operation Guide](https://github.com/iHost-Open-Source-Project/ha-operating-system?tab=readme-ov-file#readme) for more details. 
-
-#### Install iHost Hardware Control Add-on
-
-##### Add to Repository
-
-1. Navigate to the Add-on Store > Click the More button in the upper right corner > Select Repository;
-2. Enter the URL in the input box: [https://github.com/iHost-Open-Source- Project/hassio-ihost-addon](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon); 
-3. Alternatively, click this button to add it automatically.
+## Installation
+1. Go to the Add-on Store → Click the **More** button (⋮) in the upper-right corner → Select **Repositories**  
+2. Paste the following URL:  
+   [https://github.com/iHost-Open-Source-Project/hassio-ihost-addon](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon)  
+3. Or, simply click the button below to add it automatically:
 
 [![Add Repository](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FiHost-Open-Source-Project%2Fhassio-ihost-addon)
 
-##### Install **iHost Hardware Control**  Add-on
+## 🔄 Updating Repository
 
-1. Search for **iHost Hardware Control** in the Add-ons Store; 
-2. Click **Install**;
+If you can only see part of the add-ons after adding this repository, it might be due to outdated local cache.  
+To refresh:
 
-![img](./hassio-ihost-hardware-control/images/install.png)
+1. Go to the Add-on Store  
+2. Click the **More** button (⋮) in the upper-right corner  
+3. Click **Check for updates**
 
-3. Wait for the installation to complete.
+This will force Home Assistant to reload the latest add-on list from all configured repositories.
 
-##### Start **iHost Hardware Control**  Add-on
+## Available Add-ons
 
-Click the “start” button after the installation is complete and wait for the start to finish
+### iHost Hardware Control
 
-Since the iHost Hardware Control add-on relies on MQTT, the Mosquitto broker add-on is automatically installed and started for you when you start the iHost Hardware Control add-on, you need to wait a few minutes to see the Mosquitto broker plugin in the add-ons list.
+This add-on exposes iHost's hardware (buttons, RGB indicators, LED strips) as entities in Home Assistant, enabling flexible automations and hardware integration.
 
-![img](./hassio-ihost-hardware-control/images/start.png)
+[Documentation →](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-hardware-control/DOCS.md)
 
-![img](./hassio-ihost-hardware-control/images/addons.png)
+---
 
+### SONOFF Dongle Flasher for iHost
 
+Flash and upgrade the built-in MG21 Zigbee coordinator firmware directly from Home Assistant.  
+Supports switching between Zigbee and Thread firmware via a simple web interface.
 
-##### Install MQTT integrations
+[Documentation →](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-sonoff-dongle-flasher/DOCS.md)
 
-Please go to Settings -> Devices & Services -> click the Add button for MQTT Integration and wait for the addition to complete.
+---
 
-![img](./hassio-ihost-hardware-control/images/mqtt.png)
+## License
 
-![img](./hassio-ihost-hardware-control/images/config_mqtt.png)
+All add-ons in this repository are released under the [MIT License](./LICENSE).
 
-#### Check iHost Buttons and Indicators in MQTT Integrations
+---
 
-After successfully installing and launching the **iHost Hardware Control** add-on as described above, you can see the buttons and indicators on iHost in the **MQTT** integration.
-![img](./hassio-ihost-hardware-control/images/mqtt_devices.png)
+## Maintainers
 
-##### iHost Buttons and Its Entities
-
-There are 4 buttons on the top of the iHost: for power, pairing, mute, and security. A reset button in a small hole on the side of iHost, all these 5 buttons exist as a device named **iHost buttons**, with 5 **event** entities, as following: 
-
-Note: iHost power button pressed and held for 10s will shut down from hardware.
-
-![img](./hassio-ihost-hardware-control/images/ihost_buttons.png)
-
-![img](./hassio-ihost-hardware-control/images/buttons_device.png)
-
-##### iHost  Indicators and Its Entities
-
-Each of the 4 buttons on the top of the iHost has a blue LED indicator. On the side of the iHost, there is a LED light strip. All the 5 indicators exist as a device named **iHost Indicators**, with 5 **Select** entities, as following:
-
-![img](./hassio-ihost-hardware-control/images/ihost_indicators.png)
-
-![img](./hassio-ihost-hardware-control/images/indicators_device.png)
+Maintained by the [iHost Open Source Project](https://github.com/iHost-Open-Source-Project).
