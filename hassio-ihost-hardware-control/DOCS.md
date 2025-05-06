@@ -10,14 +10,6 @@ Booting and running Home Assistant on iHost via a pre-flashed microSD card is re
 
 ## Install iHost Hardware Control Add-on
 
-#### Add to Repository
-
-1. Navigate to the Add-on Store > Click the More button in the upper right corner > Select Repository;
-2. Enter the URL in the input box: [https://github.com/iHost-Open-Source- Project/hassio-ihost-addon](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon); 
-3. Alternatively, click this button to add it automatically.
-
-![img](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-hardware-control/images/install_button.png)
-
 #### Install **iHost Hardware Control**  Add-on
 
 1. Search for **iHost Hardware Control** in the Add-ons Store; 
