@@ -44,6 +44,13 @@ Supports switching between Zigbee and Thread firmware via a simple web interface
 [Documentation →](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-sonoff-dongle-flasher/DOCS.md)
 
 ---
+### Node-RED
+
+This add-on is a standalone packaged version of Node-RED, exclusively designed to support the linux/arm/v7 architecture. It has been packaged by SONOFF, specifically tailored for iHost users
+
+[Documentation →](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-node-red/README.md)
+
+---
 
 ## License
 
