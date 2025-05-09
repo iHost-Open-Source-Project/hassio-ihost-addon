@@ -38,7 +38,7 @@
         }
     ],
     "options": {
-        "data_path": "/config/iHost-Flash-Addon-Test"
+        "data_path": "/config/Sonoff-Dongle-Flasher-For-IHost"
     },
     "schema": {
         "data_path": "str"
