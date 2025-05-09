@@ -24,5 +24,24 @@
     "apparmor": false,
     "gpio": true,
     "privileged": ["SYS_ADMIN", "SYS_MODULE", "SYS_RAWIO", "SYS_RESOURCE"],
+    "map": [
+        "data:rw",
+        "config:rw",
+        {
+            "type": "share",
+            "read_only": false
+        },
+        {
+            "type": "homeassistant_config",
+            "read_only": false,
+            "path": "/config"
+        }
+    ],
+    "options": {
+        "data_path": "/config/iHost-Flash-Addon-Test"
+    },
+    "schema": {
+        "data_path": "str"
+    },
     "image": "ghcr.io/ihost-open-source-project/hassio-ihost-sonoff-dongle-flasher-{arch}"
 }
