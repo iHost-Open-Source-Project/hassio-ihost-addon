@@ -1,0 +1,65 @@
+{
+    "name": "Matter Bridge for iHost",
+    "version": "1.0.0",
+    "slug": "ihost_matter_bridge",
+    "description": "Matter Bridge add-on exposes Home Assistant devices as Matter-enabled devices, enabling them to be integrated with Matter platforms, such as Apple Home, Google Home, and Amazon Alexa.",
+    "url": "https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/tree/master/hassio-ihost-matter-bridge-addon",
+    "startup": "application",
+    "boot": "auto",
+    "arch": [
+        "armv7"
+    ],
+    "init": false,
+    "panel_icon": "mdi:alpha-m-circle",
+    "panel_title": "Matter Bridge for iHost",
+    "ingress": true,
+    "ingress_port": 3030,
+    "ingress_stream": true,
+    "host_network": true,
+    "homeassistant_api": true,
+    "hassio_role": "admin",
+    "hassio_api": true,
+    "full_access": true,
+    "apparmor": false,
+    "privileged": [
+        "SYS_ADMIN",
+        "SYS_MODULE",
+        "SYS_NICE",
+        "SYS_PTRACE",
+        "SYS_RAWIO",
+        "SYS_RESOURCE",
+        "SYS_TIME"
+    ],
+    "services": [
+        "mqtt:need"
+    ],
+    "map": [
+        {
+            "type": "share",
+            "read_only": false
+        },
+        {
+            "type": "homeassistant_config",
+            "read_only": false,
+            "path": "/config"
+        }
+    ],
+    "options": {
+        "mqtt": {}
+    },
+    "schema": {
+        "mqtt": {
+            "server": "str?",
+            "username": "str?",
+            "password": "str?"
+        }
+    },
+    "image": "ghcr.io/ihost-open-source-project/hassio-ihost-matter-bridge-{arch}",
+    "devices": [
+        "/dev/teepriv0",
+        "/dev/tee0",
+        "/dev/vendor_storage"
+    ],
+    "kernel_modules": true,
+    "devicetree": true
+}
