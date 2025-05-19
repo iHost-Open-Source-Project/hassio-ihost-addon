@@ -9,8 +9,6 @@ To use these add-ons, the following requirements must be met:
 * Home Assistant must be running on **iHost**, installed from a **pre-flashed microSD card**.
   👉 For setup instructions, please refer to the [Operation Guide](https://github.com/iHost-Open-Source-Project/ha-operating-system?tab=readme-ov-file#readme)
 
-* The **Home Assistant OS version must be 15.2.1 or higher**.
-
 
 ## Installation
 1. Go to the Add-on Store → Click the **More** button (⋮) in the upper-right corner → Select **Repositories**  
@@ -54,6 +52,14 @@ Supports switching between Zigbee and Thread firmware via a simple web interface
 This add-on is a standalone packaged version of Node-RED, exclusively designed to support the linux/arm/v7 architecture. It has been packaged by SONOFF, specifically tailored for iHost users
 
 [Documentation →](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-node-red/README.md)
+
+---
+
+### Matter Bridge for iHost
+
+Matter Bridge add-on exposes Home Assistant devices as Matter-enabled devices, enabling them to be integrated with Matter platforms, such as Apple Home, Google Home, and Amazon Alexa. This add-on is based on iHost Matter Bridge and has passed Matter certification to ensure protocol compatibility and long-term availability.
+
+[Documentation →](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-matter-bridge-addon/README.md)
 
 ---
 
