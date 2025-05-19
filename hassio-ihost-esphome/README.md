@@ -9,7 +9,7 @@
 
 ### Disclaimer
 
-This repository provides **custom-built ESPHome add-ons and container images for 32-bit platforms (e.g., `armv7`)** which are no longer supported by the official ESPHome distribution.
+This repository provides **custom-built ESPHome add-ons and container images for armv7** which are no longer supported by the official ESPHome distribution.
 
 We only maintain compatibility and build infrastructure for the **32-bit architecture**.
 If you encounter issues **unrelated to platform architecture** (such as ESPHome core features, YAML configuration, or device support), please report them to the [official ESPHome repository](https://github.com/esphome/esphome).
