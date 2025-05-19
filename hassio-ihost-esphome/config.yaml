@@ -1,0 +1,38 @@
+---
+url: https://esphome.io/
+arch:
+- armv7
+hassio_api: true
+auth_api: true
+host_network: true
+ingress: true
+ingress_port: 0
+panel_icon: mdi:chip
+uart: true
+ports:
+  6052/tcp: null
+map:
+- ssl:ro
+- config:rw
+discovery:
+- esphome
+schema:
+  status_use_ping: bool?
+  streamer_mode: bool?
+  home_assistant_dashboard_integration: bool?
+  default_compile_process_limit: int(1,)?
+  ssl: bool?
+  certfile: str?
+  keyfile: str?
+  leave_front_door_open: bool?
+backup_exclude:
+- '*/*/'
+init: false
+startup: services
+name: ESPHome Device Builder
+panel_title: ESPHome Builder
+version: 2025.4.2
+slug: esphome
+description: Build your own smart home devices using ESPHome, no programming experience
+  required
+image: ghcr.io/ihost-open-source-project/esphome-hassio
