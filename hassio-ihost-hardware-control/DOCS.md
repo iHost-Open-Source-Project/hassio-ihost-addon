@@ -61,3 +61,6 @@ Each of the 4 buttons on the top of the iHost has a blue LED indicator. On the s
 ![image-20250411155046569](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-hardware-control/images/ihost_indicators.png)
 
 ![img](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-hardware-control/images/indicators_device.png)
+
+## Wiki
+[How to use?](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/wiki/hassio-ihost-hardware-control)
