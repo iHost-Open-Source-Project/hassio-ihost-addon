@@ -14,3 +14,31 @@ This add-on is based on iHost Matter Bridge and has passed Matter certification 
 
 ## How to use
 See “[Documentation](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-matter-bridge-addon/DOCS.md)” for details on how to use the SONOFF Dongle Flasher For iHost add-on.
+
+
+## Supported devices
+  - Switch
+  - Plug
+  - Light
+  - Sensor
+  - curtain
+  - Thermostat
+
+| **Device Type** | **Description**                 | **Matter Device Type**                             | **<font style="color:rgb(38, 38, 38);">HA Entity Type</font>** |
+| --------------- | ------------------------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| Plug            | Single-channel Plug             | On/Off Plug-in Unit                                | <font style="color:rgb(38, 38, 38);">Switch </font>          |
+|                 | Multi-channel Plug              | Bridge Node    On/Off Plug-in Unit                 | <font style="color:rgb(38, 38, 38);">Switch </font>          |
+| Switch          | Single-channel Switch           | On/Off Plug-in Unit                                | <font style="color:rgb(38, 38, 38);">Switch </font>          |
+|                 | Multi-channel Switch            | Bridge Node    On/Off Plug-in Unit                 | <font style="color:rgb(38, 38, 38);">Switch </font>          |
+| Sensor          | Motion Sensor                   | Occupancy Sensor                                   | <font style="color:rgb(38, 38, 38);">Binary sensor</font>    |
+|                 | Contact Sensor                  | Contact Sensor                                     | <font style="color:rgb(38, 38, 38);">Binary sensor</font>    |
+|                 | Temperature and Humidity Sensor | Bridge Node   Temperature Sensor   Humidity Sensor | <font style="color:rgb(38, 38, 38);">Climate Sensor</font>   |
+|                 | Temperature Sensor              | Temperature Sensor                                 | <font style="color:rgb(38, 38, 38);">Climate Sensor</font>   |
+|                 | Air Quality and Humidity Sensor | Bridge Node   Temperature Sensor   Humidity Sensor | <font style="color:rgb(38, 38, 38);">Climate Sensor</font>   |
+| Light           | Dimmable Light                  | Dimmable Light                                     | <font style="color:rgb(38, 38, 38);">Light</font>            |
+|                 | Tunable White Light             | Color Temperature Light                            | <font style="color:rgb(38, 38, 38);">Light</font>            |
+|                 | Tunable Color Light             | Color Temperature Light                            | <font style="color:rgb(38, 38, 38);">Light</font>            |
+| Button          | Wireless Button                 | Generic Switch                                     | <font style="color:rgb(38, 38, 38);">EVENT </font>           |
+|                 | Multi-channel Wireless Button   | Bridge Node   Generic Switch                       | <font style="color:rgb(38, 38, 38);">EVENT </font>           |
+| Curtain         | Curtain                         | Window Covering                                    | <font style="color:rgb(38, 38, 38);">Cover </font>           |
+| Thermostat      | Thermostat                      | Thermostat                                         | <font style="color:rgb(38, 38, 38);">Climate</font>          |
