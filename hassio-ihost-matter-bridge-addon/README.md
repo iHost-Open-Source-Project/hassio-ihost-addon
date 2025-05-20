@@ -13,4 +13,4 @@ This add-on is based on iHost Matter Bridge and has passed Matter certification 
 - The Home Assistant OS version must be 15.2.1 or higher.
 
 ## How to use
-See “Documentation” for details on how to use the SONOFF Dongle Flasher For iHost add-on.
+See “[Documentation](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-matter-bridge-addon/DOCS.md)” for details on how to use the SONOFF Dongle Flasher For iHost add-on.
