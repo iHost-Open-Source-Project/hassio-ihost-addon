@@ -61,12 +61,12 @@ After installation, click **Start** to launch the add-on. Wait until the service
   - Google Home App
   - Samsung SmartThings
 + Sync supported Home Assistant devices to Matter Fabrics along with the Matter Bridge, including:
-  - Switches
-  - Plugs
-  - Lights
-  - Sensors
-  - curtain
-  - Thermostat；
+  - Switch
+  - Plug
+  - Light
+  - Sensor
+  - Curtain
+  - Thermostat
 
 | **Device Type** | **Description**                 | **Matter Device Type**                             | **<font style="color:rgb(38, 38, 38);">HA Entity Type</font>** |
 | --------------- | ------------------------------- | -------------------------------------------------- | ------------------------------------------------------------ |
