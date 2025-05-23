@@ -29,6 +29,7 @@ See “[Documentation](https://github.com/iHost-Open-Source-Project/hassio-ihost
   - Plug
   - Light
   - Sensor
+  - Button
   - curtain
   - Thermostat
 
