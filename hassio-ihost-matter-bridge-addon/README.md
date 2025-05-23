@@ -41,4 +41,4 @@ Due to differences in how the Matter standard is implemented across smart home p
 * **Device name display**: Naming rules are defined by each Matter platform, so a single device may appear with different names across platforms.
 * **Device status synchronization**: In the Google Home App, after controlling a device from another platform, you need to manually refresh the device list (pull-to-refresh) or enter the device detail page to update its status.
 
-![image](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-matter-bridge-addon/images/support-devices.jpg)
+![image](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-matter-bridge-addon/images/support-devices.jpg)
