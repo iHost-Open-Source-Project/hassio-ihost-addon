@@ -63,6 +63,17 @@ Matter Bridge add-on exposes Home Assistant devices as Matter-enabled devices, e
 
 ---
 
+### ESPHome Device Builder
+
+This repository provides **custom-built ESPHome add-ons and container images for armv7** which are no longer supported by the official ESPHome distribution.
+
+We only maintain compatibility and build infrastructure for the **32-bit architecture**.
+If you encounter issues **unrelated to platform architecture** (such as ESPHome core features, YAML configuration, or device support), please report them to the [official ESPHome repository](https://github.com/esphome/esphome).
+
+[Documentation →](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/tree/master/hassio-ihost-esphome)
+
+---
+
 ## License
 
 All add-ons in this repository are released under the [MIT License](./LICENSE).
