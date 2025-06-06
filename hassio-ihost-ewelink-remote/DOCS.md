@@ -12,17 +12,18 @@ Skip this step and simply proceed to the Add-on Store to install the required ad
 - Navigate to Settings > Add-on Store> Click the three-dot menu (⋮) in the top right corner and select Repositories
 - Enter the repository URL into the input box: https://github.com/iHost-Open-Source-Project/hassio-ihost-addon
 2. Via Button Clicking
-- Click this buttonto add the add-on automatically 
+- Click this button to add the add-on automatically 
+
 [![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FiHost-Open-Source-Project%2Fhassio-ihost-addon)
 ### 3.2 Install eWeLink-Remote Add-on
 1.    Search for eWeLink-Remote in the Add-ons Store.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/find.png)
 2.    Click Install
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/install_Addon.png)
-![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/start.png)
 3.   Wait for the installation to complete
 ### 3.3 Start the eWeLink-Remote Add-on
 After installation, click Start to launch the add-on. Wait until the service has fully started before proceeding.
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/start.png)
 ## 4. Add devices via eWeLink-Remote Add-on
 1.  Click "Web Interface" to enter the Add-on operation interface.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/open_web_ui.png)
