@@ -41,5 +41,5 @@
       "password": "str?"
     }
   },
-  "image": "ghcr.io/ihost-open-source-project/hassio-ihost-remote-{arch}"
+  "image": "ghcr.io/ihost-open-source-project/hassio-ihost-ewelink-remote-{arch}"
 }
