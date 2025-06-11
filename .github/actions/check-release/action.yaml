@@ -1,0 +1,64 @@
+name: Check Release
+inputs:
+  owner:
+    description: "Owner"
+    required: true
+    example: "esphome"
+  repo:
+    description: "Repo"
+    required: true
+    example: "home-assistant-addon"
+runs:
+  using: "composite"
+  steps:
+    - name: Get current release
+      id: get
+      shell: bash
+      run: |
+        response=$(curl -s -H "Accept: application/vnd.github.v3+json" \
+          "https://api.github.com/repos/${{ inputs.owner }}/${{ inputs.repo }}/releases/latest")
+        
+        current_version=$(echo "$response" | jq -r '.tag_name')
+        release_url=$(echo "$response" | jq -r '.html_url')
+        body=$(echo "$response" | jq -r '.body')
+        
+        echo "current_version<<EOF" >> $GITHUB_OUTPUT
+        echo "$current_version" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+        
+        echo "release_url<<EOF" >> $GITHUB_OUTPUT
+        echo "$release_url" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+        
+        echo "body<<EOF" >> $GITHUB_OUTPUT
+        echo "$body" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+        
+        echo "Current release: $current_version"
+        echo "Release url: $release_url"
+        echo "Body: $body"
+
+    - name: Compare with previous release
+      id: compare
+      shell: bash
+      run: |
+        previous_version=""
+        if [ -f ".github/${{ inputs.owner }}_${{ inputs.repo }}_last_release.txt" ]; then
+          previous_version=$(cat ".github/${{ inputs.owner }}_${{ inputs.repo }}_last_release.txt")
+        fi
+        
+        if [ "$previous_version" != "${{ steps.get.outputs.current_version }}" ]; then
+          mkdir -p .github/temp_releases
+        
+          jq -n --arg owner "${{ inputs.owner }}" \
+                --arg repo "${{ inputs.repo }}" \
+                --arg version "${{ steps.get.outputs.current_version }}" \
+                --arg previous "$previous_version" \
+                --arg url "${{ steps.get.outputs.release_url }}" \
+                --arg body "${{ steps.get.outputs.body }}" \
+                '{owner: $owner, repo: $repo, version: $version, previous: $previous, url: $url, body: $body}' \
+                > ".github/temp_releases/${{ inputs.owner }}_${{ inputs.repo }}.json"
+        fi
+        
+        mkdir -p .github
+        echo "${{ steps.get.outputs.current_version }}" > ".github/${{ inputs.owner }}_${{ inputs.repo }}_last_release.txt"

@@ -1,0 +1,115 @@
+name: Monitor Addon Version
+
+on:
+  schedule:
+     - cron: '0 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  # 并行监控每个仓库
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check EspHome-Addon release
+        uses: ./.github/actions/check-release
+        with:
+          owner: esphome
+          repo: home-assistant-addon
+
+      - name: Check EspHome release
+        uses: ./.github/actions/check-release
+        with:
+          owner: esphome
+          repo: esphome
+
+      - name: Collect new releases
+        id: collect
+        run: |
+          ls -a .github/
+          if [ -d ".github/temp_releases" ] && [ "$(ls -A .github/temp_releases)" ]; then
+            echo "new_releases=true" >> $GITHUB_OUTPUT
+          
+            message_title="新版本Release通知"
+            message_body=""
+
+            for file in .github/temp_releases/*.json; do
+              owner=$(jq -r '.owner' "$file")
+              repo=$(jq -r '.repo' "$file")
+              version=$(jq -r '.version' "$file")
+              previous=$(jq -r '.previous' "$file")
+              url=$(jq -r '.url' "$file")
+              body=$(jq -r '.body' "$file")
+
+              message_body+="\n\n### [${owner}/${repo}](${url})\n\n"
+              message_body+="**版本: [${version}]**\n\n"
+
+              if [ "$previous" != "null" ]; then
+                message_body+="**上一版本: [${previous}]**\n\n"
+              fi
+
+              if [ ${#body} -gt 500 ]; then
+                body="${body:0:500}..."
+              fi
+
+              message_body+="**更新内容:**\n\n${body}\n\n"
+            done
+
+            echo "message_title=$message_title" >> $GITHUB_OUTPUT
+            echo "message_body<<EOF" >> $GITHUB_OUTPUT
+            echo "$message_body" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+
+            echo "Found new releases to notify"
+          else
+            echo "new_releases=false" >> $GITHUB_OUTPUT
+            echo "No new releases found"
+          fi
+
+      - name: Send DingTalk notification
+        id: send
+        if: steps.collect.outputs.new_releases == 'true'
+        run: |
+          timestamp=$(TZ='Asia/Shanghai' date +"%Y-%m-%d %H:%M:%S%:z")
+          
+          releases=(.github/temp_releases/*)
+          
+          release_count=${#releases[@]}
+
+          message=$(cat <<EOF
+          {
+            "msgtype": "markdown",
+            "markdown": {
+              "title": "${{ steps.collect.outputs.message_title }}",
+              "text": "🎉 **发现 $release_count 个新版本更新** \n\n 🚀 **检测时间: $timestamp**\n\n${{ steps.collect.outputs.message_body }}"
+            },
+            "at": {
+              "isAtAll": false
+            }
+          }
+          EOF
+          )
+
+          response=$(curl -s -X POST "${{ secrets.DINGTALK_WEBHOOK }}" \
+            -H "Content-Type: application/json" \
+            -d "$message")
+
+          if echo "$response" | grep -q "errcode\":0"; then
+            echo "success"
+            echo "notification_status=success" >> $GITHUB_OUTPUT
+          else
+            echo "faild: $response"
+            echo "notification_status=failure" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+      - name: Commit updated release files
+        if: steps.collect.outputs.new_releases == 'true' && steps.send.outputs.notification_status == 'success'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .github/*_*_last_release.txt
+          git commit -m "Update last release versions"
+          git push
