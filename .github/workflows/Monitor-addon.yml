@@ -1,12 +1,11 @@
 name: Monitor Addon Version
 
 on:
-  schedule:
-     - cron: '0 1 * * *'
+#  schedule:
+#     - cron: '0 1 * * *'
   workflow_dispatch:
 
 jobs:
-  # 并行监控每个仓库
   monitor:
     runs-on: ubuntu-latest
     steps:
@@ -25,10 +24,15 @@ jobs:
           owner: esphome
           repo: esphome
 
+      - name: Check Matter-Server-Addon release
+        uses: ./.github/actions/check-release
+        with:
+          owner: home-assistant-libs
+          repo: python-matter-server
+
       - name: Collect new releases
         id: collect
         run: |
-          ls -a .github/
           if [ -d ".github/temp_releases" ] && [ "$(ls -A .github/temp_releases)" ]; then
             echo "new_releases=true" >> $GITHUB_OUTPUT
           
@@ -50,8 +54,8 @@ jobs:
                 message_body+="**上一版本: [${previous}]**\n\n"
               fi
 
-              if [ ${#body} -gt 500 ]; then
-                body="${body:0:500}..."
+              if [ ${#body} -gt 100 ]; then
+                body="${body:0:100}..."
               fi
 
               message_body+="**更新内容:**\n\n${body}\n\n"
