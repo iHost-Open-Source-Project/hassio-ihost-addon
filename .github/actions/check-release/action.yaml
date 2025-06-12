@@ -40,25 +40,10 @@ runs:
 
     - name: Compare with previous release
       id: compare
-      shell: bash
-      run: |
-        previous_version=""
-        if [ -f ".github/${{ inputs.owner }}_${{ inputs.repo }}_last_release.txt" ]; then
-          previous_version=$(cat ".github/${{ inputs.owner }}_${{ inputs.repo }}_last_release.txt")
-        fi
-        
-        if [ "$previous_version" != "${{ steps.get.outputs.current_version }}" ]; then
-          mkdir -p .github/temp_releases
-        
-          jq -n --arg owner "${{ inputs.owner }}" \
-                --arg repo "${{ inputs.repo }}" \
-                --arg version "${{ steps.get.outputs.current_version }}" \
-                --arg previous "$previous_version" \
-                --arg url "${{ steps.get.outputs.release_url }}" \
-                --arg body "${{ steps.get.outputs.body }}" \
-                '{owner: $owner, repo: $repo, version: $version, previous: $previous, url: $url, body: $body}' \
-                > ".github/temp_releases/${{ inputs.owner }}_${{ inputs.repo }}.json"
-        fi
-        
-        mkdir -p .github
-        echo "${{ steps.get.outputs.current_version }}" > ".github/${{ inputs.owner }}_${{ inputs.repo }}_last_release.txt"
+      uses: ./.github/actions/compare-with-previous
+      with:
+        owner: ${{ inputs.owner }}
+        repo: ${{ inputs.repo }}
+        current_version: ${{ steps.get.outputs.current_version }}
+        release_url: ${{ steps.get.outputs.release_url }}
+        body: ${{ steps.get.outputs.body }}

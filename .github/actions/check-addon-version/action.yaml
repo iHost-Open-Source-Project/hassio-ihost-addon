@@ -1,0 +1,57 @@
+name: Check HA Addon Version
+inputs:
+  addon_folder_name:
+    description: "Addon folder name"
+    required: true
+    example: "matter_server"
+  config:
+    description: "Addon config file name"
+    required: false
+    example: "config.yaml"
+    default: "config.yaml"
+  change_log:
+    description: "Change log file name"
+    required: false
+    example: "CHANGELOG.md"
+    default: "CHANGELOG.md"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Get current release
+      id: get
+      shell: bash
+      run: |
+        config_url="https://raw.githubusercontent.com/home-assistant/addons/refs/heads/master/${{ inputs.addon_folder_name }}/${{ inputs.config }}"
+        
+        response=$(curl -s -H "Accept: application/vnd.github.v3+json" $config_url)
+        
+        current_version=$(echo "$response" | yq -r '.version')
+        release_url="https://github.com/home-assistant/addons/blob/master/${{ inputs.addon_folder_name }}/${{ inputs.config }}"
+        body="[CHANGELOG.md](https://github.com/home-assistant/addons/blob/master/${{ inputs.addon_folder_name }}/${{ inputs.change_log }})"
+        
+        echo "current_version<<EOF" >> $GITHUB_OUTPUT
+        echo "$current_version" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+        
+        echo "release_url<<EOF" >> $GITHUB_OUTPUT
+        echo "$release_url" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+        
+        echo "body<<EOF" >> $GITHUB_OUTPUT
+        echo "$body" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+        
+        echo "Current release: $current_version"
+        echo "Release url: $release_url"
+        echo "Body: $body"
+
+    - name: Compare with previous release
+      id: compare
+      uses: ./.github/actions/compare-with-previous
+      with:
+        owner: addons
+        repo: ${{ inputs.addon_folder_name }}
+        current_version: ${{ steps.get.outputs.current_version }}
+        release_url: ${{ steps.get.outputs.release_url }}
+        body: ${{ steps.get.outputs.body }}

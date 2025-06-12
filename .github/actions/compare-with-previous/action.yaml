@@ -1,0 +1,50 @@
+name: Compare with previous release
+inputs:
+  owner:
+    description: "Owner"
+    required: true
+    example: "esphome"
+  repo:
+    description: "Repo"
+    required: true
+    example: "home-assistant-addon"
+  current_version:
+    description: "Current Version"
+    required: true
+    example: "2023.10.0"
+  release_url:
+    description: "Release URL"
+    required: true
+    example: "https://github.com/esphome/home-assistant-addon/releases/tag/2023.10.0"
+  body:
+    description: "Release Body"
+    required: true
+    example: "## Changelog\n\n- Fixes\n- New features"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Compare with previous release
+      id: compare
+      shell: bash
+      run: |
+        previous_version=""
+        if [ -f ".github/${{ inputs.owner }}_${{ inputs.repo }}_last_release.txt" ]; then
+          previous_version=$(cat ".github/${{ inputs.owner }}_${{ inputs.repo }}_last_release.txt")
+        fi
+        
+        if [ "$previous_version" != "${{ inputs.current_version }}" ]; then
+          mkdir -p .github/temp_releases
+        
+          jq -n --arg owner "${{ inputs.owner }}" \
+                --arg repo "${{ inputs.repo }}" \
+                --arg version "${{ inputs.current_version }}" \
+                --arg previous "$previous_version" \
+                --arg url "${{ inputs.release_url }}" \
+                --arg body "${{ inputs.body }}" \
+                '{owner: $owner, repo: $repo, version: $version, previous: $previous, url: $url, body: $body}' \
+                > ".github/temp_releases/${{ inputs.owner }}_${{ inputs.repo }}.json"
+        fi
+        
+        mkdir -p .github
+        echo "${{ inputs.current_version }}" > ".github/${{ inputs.owner }}_${{ inputs.repo }}_last_release.txt"

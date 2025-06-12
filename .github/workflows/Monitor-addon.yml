@@ -1,8 +1,8 @@
 name: Monitor Addon Version
 
 on:
-#  schedule:
-#     - cron: '0 1 * * *'
+  #  schedule:
+  #     - cron: '0 1 * * *'
   workflow_dispatch:
 
 jobs:
@@ -11,6 +11,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Use yq
+        uses: mikefarah/yq@v4
+        with:
+          cmd:
+            yq --version || echo "yq 未安装"
 
       - name: Check EspHome-Addon release
         uses: ./.github/actions/check-release
@@ -24,11 +30,21 @@ jobs:
           owner: esphome
           repo: esphome
 
-      - name: Check Matter-Server-Addon release
+      - name: Check Python-Matter-Server release
         uses: ./.github/actions/check-release
         with:
           owner: home-assistant-libs
           repo: python-matter-server
+
+      - name: Check Matter-Server-Addon release
+        uses: ./.github/actions/check-addon-version
+        with:
+          addon_folder_name:  matter_server
+
+      - name: Check Matter-Server-Addon release
+        uses: ./.github/actions/check-addon-version
+        with:
+          addon_folder_name: openthread_border_router
 
       - name: Collect new releases
         id: collect
@@ -37,7 +53,7 @@ jobs:
             echo "new_releases=true" >> $GITHUB_OUTPUT
           
             message_title="新版本Release通知"
-            message_body=""
+            message_body+="---------------------------------------\n\n"
 
             for file in .github/temp_releases/*.json; do
               owner=$(jq -r '.owner' "$file")
@@ -48,17 +64,14 @@ jobs:
               body=$(jq -r '.body' "$file")
 
               message_body+="\n\n### [${owner}/${repo}](${url})\n\n"
-              message_body+="**版本: [${version}]**\n\n"
+              message_body+="**版本更新: [${previous}] ➡️ [${version}]**\n\n"
 
-              if [ "$previous" != "null" ]; then
-                message_body+="**上一版本: [${previous}]**\n\n"
-              fi
-
-              if [ ${#body} -gt 100 ]; then
+              if [[ ! $body == "[CHANGELOG.md]"* && ${#body} -gt 100 ]]; then
                 body="${body:0:100}..."
               fi
 
               message_body+="**更新内容:**\n\n${body}\n\n"
+              message_body+="---------------------------------------\n\n"
             done
 
             echo "message_title=$message_title" >> $GITHUB_OUTPUT
