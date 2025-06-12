@@ -100,7 +100,7 @@ jobs:
             "msgtype": "markdown",
             "markdown": {
               "title": "${{ steps.collect.outputs.message_title }}",
-              "text": "🎉 **发现 $release_count 个新版本更新** \n\n 🚀 **检测时间: $timestamp**\n\n${{ steps.collect.outputs.message_body }}"
+              "text": "**🔎 Hassio-ihost-addon版本检测通知** \n\n 🎉 **发现 $release_count 个新版本更新** \n\n 🚀 **检测时间: $timestamp**\n\n${{ steps.collect.outputs.message_body }}"
             },
             "at": {
               "isAtAll": false
