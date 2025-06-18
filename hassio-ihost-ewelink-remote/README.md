@@ -1,17 +1,20 @@
 # eWeLink-Remote Gateway Add-on
 
+
 ![Supports armv7 Architecture](https://img.shields.io/badge/armv7-yes-green.svg)
 ![Supports aarch64 Architecture](https://img.shields.io/badge/aarch64-yes-green.svg)
+![Supports amd64 Architecture](https://img.shields.io/badge/amd64-yes-green.svg)
 
 
 ## About
-"eWeLink-Remote Gateway" is a remote control solution exclusive to SONOFF's devices, offering an enhanced alternative to traditional 433MHz RF control. It provides more reliable, longer-range, and easier control of your smart devices. eWeLink-Remote network includes an eWeLink-Remote gateway device and multiple sub-devices. 
-eWeLink-Remote Gateway Add-on supports using devices such as R5, R5W, S-Mate, and S-Mate2 acting as eWeLink-Remote gateways.
+eWeLink-Remote Gateway add-on is an eWeLink-Remote Gateway gateway that supports adding eWeLink-Remote Gateway sub-devices and syncing sub-devices  to Home Assistant,such as **R5,R5W,S-Mate,S-Mate2**. You can select eWeLink-Remote Gateway sub-devices in Home Assistant Automations and trigger automations through single-click,double-click,and long-press events reported by eWeLink-Remote Gateway sub-devices.
 
 
-## Prerequisites 
-
-Booting and running Home Assistant on iHost via a pre-flashed microSD card is required to use the eWeLink-Remote Gateway add-on, See the Operation Guide for more details. 
+## Prerequisite
+To use the eWeLink-Remote Gateway Add-on, make sure your Home Assistant setup meets the following conditions:
+- The device running Home Assistant must have a functional Bluetooth module (if there is no Bluetooth module, you can configure a Bluetooth Dongle).
+- Enable Bluetooth integration
+- Bluetooth Passive Scanning must be enabled in Home Assistant.
 
 ## Installation
 1. Go to the Add-on Store → Click the **More** button (⋮) in the upper-right corner → Select **Repositories**  
