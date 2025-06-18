@@ -1,17 +1,18 @@
 {
-  "name": "eWeLink-Remote",
-  "version": "0.1.0",
+  "name": "eWeLink-Remote Gateway",
+  "version": "0.2.0",
   "slug": "ewelink_remote",
-  "description": "eWeLink-Remote Add-on supports adding eWeLink-Remote sub-devices R5, R5W, S-Mate, S-Mate2 to Home Assistant as trigger conditions for automation",
+  "description": "eWeLink-Remote Gateway Add-on supports adding eWeLink-Remote sub-devices R5, R5W, S-Mate, S-Mate2 to Home Assistant as trigger conditions for automation",
   "startup": "application",
   "boot": "auto",
   "arch": [
     "armv7",
-    "aarch64"
+    "aarch64",
+    "amd64"
   ],
   "init": false,
   "panel_icon": "mdi:signal-variant",
-  "panel_title": "eWeLink-Remote",
+  "panel_title": "eWeLink-Remote Gateway",
   "ingress": true,
   "ingress_port": 3031,
   "ingress_stream": true,
@@ -19,6 +20,7 @@
   "homeassistant_api": true,
   "hassio_role": "admin",
   "hassio_api": true,
+  "host_dbus": true,
   "services": [
     "mqtt:need"
   ],
@@ -27,6 +29,11 @@
       "type": "homeassistant_config",
       "read_only": false,
       "path": "/config"
+    },
+    {
+      "type": "addon_config",
+      "read_only": false,
+      "path": "/server_data"
     }
   ],
   "options": {
