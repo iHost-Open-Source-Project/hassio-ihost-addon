@@ -4,6 +4,7 @@
   "slug": "ewelink_remote",
   "description": "eWeLink-Remote Gateway Add-on supports adding eWeLink-Remote sub-devices R5, R5W, S-Mate, S-Mate2 to Home Assistant as trigger conditions for automation",
   "startup": "application",
+  "url": "https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/tree/master/hassio-ihost-ewelink-remote",
   "boot": "auto",
   "arch": [
     "armv7",

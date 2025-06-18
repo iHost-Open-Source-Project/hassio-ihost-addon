@@ -1,6 +1,6 @@
 # eWeLink-Remote Gateway
 ## 1. Introduction
-eWeLink-Remote Gateway add-on is an eWeLink-Remote Gateway gateway that supports adding eWeLink-Remote sub-devices and syncing sub-devices  to Home Assistant,such as **R5,R5W,S-Mate,S-Mate2**. You can select eWeLink-Remote Gateway sub-devices in Home Assistant Automations and trigger automations through single-click,double-click,and long-press events reported by eWeLink-Remote Gateway sub-devices.Learn more about eWeLink-Remote Gateway.
+eWeLink-Remote Gateway add-on is an eWeLink-Remote Gateway gateway that supports adding eWeLink-Remote sub-devices and syncing sub-devices  to Home Assistant,such as  **[R5](https://sonoff.tech/product/smart-wall-switches/r5/) 、[R5W](https://sonoff.tech/product/smart-wall-switches/r5/) 、[S-Mate](https://sonoff.tech/product/diy-smart-switches/s-mate/) 、[S-Mate2](https://sonoff.tech/product/diy-smart-switches/s-mate/)**. You can select eWeLink-Remote Gateway sub-devices in Home Assistant Automations and trigger automations through single-click,double-click,and long-press events reported by eWeLink-Remote Gateway sub-devices.**[Learn more](https://sonoff.tech/news-and-events/what-is-ewelink-remote-control/)** about eWeLink-Remote Gateway.
 
 ## 2. Prerequisite
 To use the eWeLink-Remote Gateway Add-on, make sure your Home Assistant setup meets the following conditions:
@@ -23,13 +23,14 @@ Skip this step and simply proceed to the Add-on Store to install the required ad
 1.    Search for eWeLink-Remote Gateway in the Add-ons Store.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/find.png)
 2.    Click Install
-![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/stall.png)
-![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/open_web_ui1.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/install_Addon.png)
 3.   Wait for the installation to complete
 ### 3.3 Start the eWeLink-Remote Gateway Add-on
 After installation, click Start to launch the add-on. Wait until the service has fully started before proceeding.
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/start.png)
 ## 4. Add devices via eWeLink-Remote Gateway Add-on
 1.  Click "Web Interface" to enter the Add-on operation interface.
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/open_web_ui1.png)
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/open_web_ui.png)
 **Note*:**
 - Bluetooth must be enabled in Home Assistant to use the eWeLink-Remote Gateway Add-on. If there is no Bluetooth hardware module (configurable Bluetooth Dongle) or Bluetooth integration is not enabled, the Add-on will not work;
