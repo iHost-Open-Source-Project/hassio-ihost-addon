@@ -42,8 +42,8 @@ runs:
       id: compare
       uses: ./.github/actions/compare-with-previous
       with:
-        owner: '${{ inputs.owner }}'
-        repo: '${{ inputs.repo }}'
-        current_version: '${{ steps.get.outputs.current_version }}'
-        release_url: '${{ steps.get.outputs.release_url }}'
-        body: '${{ steps.get.outputs.body }}'
+        owner: ${{ inputs.owner }}
+        repo: ${{ inputs.repo }}
+        current_version: ${{ steps.get.outputs.current_version }}
+        release_url: ${{ steps.get.outputs.release_url }}
+        body: ${{ steps.get.outputs.body }}
