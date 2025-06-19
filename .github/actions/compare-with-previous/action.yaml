@@ -31,6 +31,7 @@ runs:
         previous_version=""
         if [ -f ".github/${{ inputs.owner }}_${{ inputs.repo }}_last_release.txt" ]; then
           previous_version=$(cat ".github/${{ inputs.owner }}_${{ inputs.repo }}_last_release.txt")
+          echo "previous_version: $previous_version"
         fi
         
         if [ "$previous_version" != "${{ inputs.current_version }}" ]; then
