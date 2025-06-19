@@ -24,11 +24,11 @@ jobs:
           owner: esphome
           repo: home-assistant-addon
 
-      - name: Check EspHome release
-        uses: ./.github/actions/check-release
-        with:
-          owner: esphome
-          repo: esphome
+#      - name: Check EspHome release
+#        uses: ./.github/actions/check-release
+#        with:
+#          owner: esphome
+#          repo: esphome
 
       - name: Check Python-Matter-Server release
         uses: ./.github/actions/check-release
