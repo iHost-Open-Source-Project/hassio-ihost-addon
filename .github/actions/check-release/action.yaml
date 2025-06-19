@@ -20,7 +20,7 @@ runs:
         
         current_version=$(echo "$response" | jq -r '.tag_name')
         release_url=$(echo "$response" | jq -r '.html_url')
-        body=$(echo "$response" | jq -r '.body')
+        body=$(echo "$response" | jq -c '.body')
         
         echo "current_version<<EOF" >> $GITHUB_OUTPUT
         echo "$current_version" >> $GITHUB_OUTPUT
