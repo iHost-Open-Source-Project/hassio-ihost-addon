@@ -1,5 +1,10 @@
 # Changelog  
 
+## 0.2.1  
+### Fixed  
+- Fixed an issue where the plugin stopped working due to a misjudgment that Bluetooth integration did not exist because the WebSocket long connection interface response timed out.
+- Fixed an issue where device or entity names could not be synchronized due to a failure to call the device and entity list interface.
+
 ## 0.2.0  
 ### Added  
 - Add-on adds support for x64 architecture  
