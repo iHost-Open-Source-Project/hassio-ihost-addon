@@ -1,14 +1,18 @@
-# SONOFF Dongle Flasher For iHost
+# SONOFF Dongle Flasher
 
- ![Supports armv7 Architecture](https://img.shields.io/badge/armv7-yes-green.svg)
+![Supports armv7 Architecture](https://img.shields.io/badge/armv7-yes-green.svg) ![Supports aarch64 Architecture](https://img.shields.io/badge/aarch64-yes-green.svg) ![Supports amd64 Architecture](https://img.shields.io/badge/amd64-yes-green.svg)
  
 ## About
 
-Flash the built-in MG21 (Zigbee coordinator) firmware on iHost with one-click flashing through the web interface.
+SONOFF Dongle Flasher supports online firmware flashing for the iHost MG21 chip and the SONOFF Dongle series (ZBDongle-P and ZBDongle-E).
 
 ## Prerequisites
 
-Booting and running Home Assistant on iHost via a pre-flashed microSD card is required to use the SONOFF Dongle Flasher For iHost add-on, See the Operation Guide for more details.
+Before using the add-on, please make sure the serial port is not in use (it is commonly occupied by services like Zigbee2MQTT or ZHA).
+During the firmware flashing process, the add-on will attempt to connect to the device and automatically check whether the serial port is occupied.
+If it is, the add-on will try to stop the conflicting service for you.
+[Operation Guide >](https://github.com/iHost-Open-Source-Project/ha-operating-system?tab=readme-ov-file#readme)
+
 
 ## Installation
 1. Go to the Add-on Store → Click the **More** button (⋮) in the upper-right corner → Select **Repositories**  
@@ -20,4 +24,4 @@ Booting and running Home Assistant on iHost via a pre-flashed microSD card is re
 
 ## How to use
 
-See “Documentation” for details on how to use the SONOFF Dongle Flasher For iHost add-on.
+See “Documentation” for details on how to use the SONOFF Dongle Flasher add-on.
