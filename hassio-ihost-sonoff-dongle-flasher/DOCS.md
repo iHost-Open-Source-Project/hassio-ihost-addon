@@ -19,6 +19,7 @@ Skip this step and simply proceed to the Add-on Store to install the required ad
 - Enter the repository URL into the input box: https://github.com/iHost-Open-Source-Project/hassio-ihost-addon
 2. Via Button Clicking
 - Click this button to add the add-on automatically 
+
 [![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FiHost-Open-Source-Project%2Fhassio-ihost-addon)
 ### 3.2 Install SONOFF Dongle Flasher Add-on
 1.    Search for SONOFF Dongle Flasher in the Add-ons Store.
@@ -79,26 +80,32 @@ Open the web interface and click **"Connect"**. The tool will automatically scan
 5. Wait for the flashing process to complete.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Auto_Flash%20complet.png)
 ### 4.3 Manually Locate SONOFF ZBDongle-P or ZBDongle-E and Flash Zigbee Firmware
-<font color="blue">Before flashing, please insert the SONOFF ZBDongle-P or SONOFF ZBDongle-E into the USB port of the device running Home Assistant.</font>。
+<font color="blue">Before flashing, please insert the SONOFF ZBDongle-P or SONOFF ZBDongle-E into the USB port of the device running Home Assistant.</font>
+
 1. If the dongle is not found during automatic scanning, you can click the **"Manually add device"** option on the scan page to locate it manually.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Manually.png)
+
 2. Select "Device Model" and "Baud Rate", enter the "Serial Port Path", and click "Confirm".
-![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Manually.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Manually_Information.png)
 You can follow the prompt:
 **"Please go to Settings > System > Hardware > All Hardware"**, and find the **serial port path** of the hardware device you want to add.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Manually_hint1.png)
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Manually_hint2.png)
+
 3. Select the Zigbee firmware version you want to flash.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Manual_Select%20Firmware.png)
+
 4. Click **"Flash"** to begin flashing the firmware.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Manual_flash.png)
+
 5. Wait for the flashing to complete. (During the flashing process, please disable ZHA and Zigbee2MQTT. You can restart them after the flashing is complete.)
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Manual_Flash%20complet.png)
 
-> </font><font color="red">Note*</font>When manually flashing firmware to the ZBDongle-P, the progress may sometimes get stuck at 0%.
+> </font><font color="red">Note*</font> When manually flashing firmware to the ZBDongle-P, the progress may sometimes get stuck at 0%.
 > **Possible causes:**
 > - Mismatched model: The selected device model is ZBDongle-E, but the device connected > to the specified serial port is ZBDongle-P.
 > - As a result, the serial port is occupied and cannot be used for another attempt.
+> 
 > **Please try:**
 > - Restart the Add-on to release the serial port.
 > - Verify and select the correct de vice model matching your device (ZBDongle-P).
