@@ -87,8 +87,8 @@ Open the web interface and click **"Connect"**. The tool will automatically scan
 
 2. Select "Device Model" and "Baud Rate", enter the "Serial Port Path", and click "Confirm".
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Manually_Information.png)
-You can follow the prompt:
-**"Please go to Settings > System > Hardware > All Hardware"**, and find the **serial port path** of the hardware device you want to add.
+> You can follow the prompt: **"Please go to Settings > System > Hardware > All Hardware"**, and find the **serial port path** of the hardware device you want to add.
+
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Manually_hint1.png)
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Manually_hint2.png)
 
@@ -102,6 +102,7 @@ You can follow the prompt:
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/Dongle_Manual_Flash%20complet.png)
 
 > </font><font color="red">Note*</font> When manually flashing firmware to the ZBDongle-P, the progress may sometimes get stuck at 0%.
+> 
 > **Possible causes:**
 > - Mismatched model: The selected device model is ZBDongle-E, but the device connected > to the specified serial port is ZBDongle-P.
 > - As a result, the serial port is occupied and cannot be used for another attempt.
