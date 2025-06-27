@@ -5,10 +5,13 @@
 OpenThread Border Router add-on. The add-on uses the upstream OpenThread
 Border Router implementation and wraps it as an add-on for Home Assistant.
 
-**NOTE:** This requires a supported 802.15.4 capable radio with OpenThread
-RCP firmware. If you are using [Home Assistant Yellow](https://www.home-assistant.io/yellow/) or [Home Assistant Connect ZBT-1](https://www.home-assistant.io/connectzbt1/) (previously called SkyConnect) then
-the correct firmware is automatically installed.
+**NOTE:** This requires a supported 802.15.4 capable radio with OpenThread RCP firmware. 
 
+> Important!!!
+>
+> When using the iHost’s built-in **MG21** chip (located at `/dev/ttyS4`) with this add-on, **hardware flow control must be disabled** for the OpenThread Border Router to function properly.
+
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-openthread-border-router/images/otbr_configuration.png)
 
 ## About
 
