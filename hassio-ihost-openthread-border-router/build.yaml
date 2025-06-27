@@ -1,0 +1,6 @@
+---
+build_from:
+  armv7: ghcr.io/home-assistant/armv7-base-debian:bookworm
+args:
+  OTBR_VERSION: b067e5ac5f8b3e92750df24922017eee2bc0fa04
+  UNIVERSAL_SILABS_FLASHER: 0.0.28
