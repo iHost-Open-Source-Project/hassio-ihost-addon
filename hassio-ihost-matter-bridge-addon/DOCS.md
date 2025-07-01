@@ -2,14 +2,14 @@
 
 ## Introduction
 
-Matter Bridge add-on exposes Home Assistant devices as Matter-enabled devices, enabling them to be integrated with Matter platforms, such as Apple Home, Google Home, and Amazon Alexa.  
+Matter Bridge for iHost add-on exposes entities of Home Assistant devices as Matter-enabled devices, enabling them to be integrated with Matter platforms, such as Apple Home, Google Home, and Amazon Alexa.  
 This add-on is based on iHost Matter Bridge and has passed Matter certification to ensure protocol compatibility and long-term availability.
 
 At the same time, it is compatible with web and mobile terminals.
 
 ## Prerequisite
 
-The **Matter Bridge** add-on is designed for the **HA over iHost** project **ONLY**, allowing users to expose Home Assistant devices as Matter devices and sync them to supported Matter platforms for control.
+The **Matter Bridge for iHost add-on** is designed for the **HA over iHost** project **ONLY**, allowing users to expose entities of Home Assistant devices as Matter devices and sync them to supported Matter platforms for control.
 
 Therefore, this add-on is only functional when Home Assistant is running on iHost. Learn [<u>How to run Home Assistant Operating System on iHost?</u>](https://github.com/iHost-Open-Source-Project/ha-operating-system?tab=readme-ov-file#readme)
 
@@ -56,29 +56,29 @@ After installation, click **Start** to launch the add-on. Wait until the service
 2. Follow the instructions to add Home Assistant as a Matter Bridge and sync its devices to the connected Matter Fabrics.
 
 -   Click **Start Pairing**.
--   Scan the **QR code** or enter the **numeric setup code** using the app of any Matte-enabled Platform to pair the Matter Bridge, including:
+-   Scan the **QR code** or enter the **numeric setup code** using the app of any Matter-enabled Platform to pair the Matter Bridge, including:
     -   Apple Home App
     -   Amazon Alexa App
     -   Google Home App
     -   Samsung SmartThings
--   Sync supported Home Assistant devices to Matter Fabrics along with the Matter Bridge, including:
+-   **Go to the device list** and **select the entity** you want to sync to the Matter platform, including:
     -   Switch
-    -   Plug
+    -   Binary sensor
     -   Light
-    -   Sensor
-    -   Button
-    -   Curtain
-    -   Thermostat
+    -   Event 
+    -   Cover 
+    -   Climate
 
 ### ⚠️ Note
 
 Due to differences in how the Matter standard is implemented across smart home platforms, **the same Matter device may appear and behave differently in each ecosystem**. This includes but is not limited to:
 
--   **Device display format**: Multi-channel devices are shown as a single card in Apple Home, but split into multiple cards in Google Home.
 -   **Device name display**: Naming rules are defined by each Matter platform, so a single device may appear with different names across platforms.
--   **Device status synchronization**: In the Google Home App, after controlling a device from another platform, you need to manually refresh the device list (pull-to-refresh) or enter the device detail page to update its status.
+-   **Device status not updated**: In  Alexa and Google Home App, after controlling a device from another platform, you need to manually refresh the device list (pull-to-refresh) or enter the device detail page to update its status.
+-   **Device status display is inconsistent**: In  Smartthings App，the percentage value of the light brightness is always 1% higher than the actual brightness value. Curtain percentage display reverse
+-   **Curtain percentage display reverse**:  Different platforms have different definitions of the opening and closing percentages of curtain-type devices. It is known that Alexa and Apple/Smartthings/Google have opposite directions. For example, Alexa displays a percentage of 30%, while Apple/Smartthings/Google displays a percentage of 70%.
 
-![image](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-matter-bridge-addon/images/support-devices.jpg)
+![image](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-matter-bridge-addon/images/support-devices.png)
 
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-matter-bridge-addon/images/qr-code.png)  
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-matter-bridge-addon/images/add-success.png)
@@ -93,15 +93,15 @@ After pairing the Matter Bridge, all the connected Matter Fabrics will be shown 
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-matter-bridge-addon/images/remove-all.png)
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-matter-bridge-addon/images/remove-all-confirm.png)
 
-## **<font style="color:#000000;">Manage Devices to Sync to Matter Fabrics</font>**
+## **<font style="color:#000000;">Manage entities that need to be synced to the Matter platform</font>**
 
 Click **Device List** in the top right corner to access the list of supported and not-supported Home Assistant devices for syncing to Matter Fabrics.  
-By default, all supported devices are synced to the connected Matter Fabrics.
 
 -   Click **Edit** next to the **Supported Devices** list
--   Select devices you want to sync, or uncheck them to remove from the connected Matter Fabrics.
--   Click **Save**.
-
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-matter-bridge-addon/images/device-list-1.png)  
+
+
+-   Select entities you want to sync, or uncheck them to remove from the connected Matter Fabrics.
+-   Click **Save**.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-matter-bridge-addon/images/device-list-2.png)  
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-matter-bridge-addon/images/device-list-3.png)
