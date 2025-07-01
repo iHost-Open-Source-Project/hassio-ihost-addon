@@ -4,8 +4,10 @@
 
 ## About
 
-Matter Bridge add-on exposes Home Assistant devices as Matter-enabled devices, enabling them to be integrated with Matter platforms, such as Apple Home, Google Home, and Amazon Alexa.
+Matter Bridge for iHost add-on exposes entities of Home Assistant devices as Matter-enabled devices, enabling them to be integrated with Matter platforms, such as Apple Home, Google Home, and Amazon Alexa.  
 This add-on is based on iHost Matter Bridge and has passed Matter certification to ensure protocol compatibility and long-term availability.
+
+At the same time, it is compatible with web and mobile terminals.
 
 ## Prerequisites
 
@@ -24,21 +26,23 @@ This add-on is based on iHost Matter Bridge and has passed Matter certification 
 See “[Documentation](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-matter-bridge-addon/DOCS.md)” for details on how to use the SONOFF Dongle Flasher For iHost add-on.
 
 
-## Supported devices
-  - Switch
-  - Plug
-  - Light
-  - Sensor
-  - Button
-  - curtain
-  - Thermostat
+## Supported entities
+-   Switch
+-   Binary sensor
+-   Light
+-   Event 
+-   Cover 
+-   Climate
 
 ### ⚠️ Note
 
 Due to differences in how the Matter standard is implemented across smart home platforms, **the same Matter device may appear and behave differently in each ecosystem**. This includes but is not limited to:
 
-* **Device display format**: Multi-channel devices are shown as a single card in Apple Home, but split into multiple cards in Google Home.
-* **Device name display**: Naming rules are defined by each Matter platform, so a single device may appear with different names across platforms.
-* **Device status synchronization**: In the Google Home App, after controlling a device from another platform, you need to manually refresh the device list (pull-to-refresh) or enter the device detail page to update its status.
+-   **Device name display**: Naming rules are defined by each Matter platform, so a single device may appear with different names across platforms.
+-   **Device status not updated**: In  Alexa and Google Home App, after controlling a device from another platform, you need to manually refresh the device list (pull-to-refresh) or enter the device detail page to update its status.
+-   **Device status display is inconsistent**: In  Smartthings App，the percentage value of the light brightness is always 1% higher than the actual brightness value. Curtain percentage display reverse
+-   **Curtain percentage display reverse**:  Different platforms have different definitions of the opening and closing percentages of curtain-type devices. It is known that Alexa and Apple/Smartthings/Google have opposite directions. For example, Alexa displays a percentage of 30%, while Apple/Smartthings/Google displays a percentage of 70%.
 
-![image](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-matter-bridge-addon/images/support-devices.jpg)
+![image](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-matter-bridge-addon/images/support-devices.png)
+![image](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-matter-bridge-addon/images/readme-1.png)
+![image](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-matter-bridge-addon/images/readme-1.png)
