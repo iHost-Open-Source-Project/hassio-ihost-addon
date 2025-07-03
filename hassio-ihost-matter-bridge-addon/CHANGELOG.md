@@ -1,4 +1,4 @@
-## [1.1.0] - 2025-06-30
+## [1.1.0] - 2025-07-03
 
 ### Added
 - Introduced a UI toggle to enable or disable **Auto Sync**, allowing users to control whether newly added devices are automatically synchronized to the Matter Bridge.
