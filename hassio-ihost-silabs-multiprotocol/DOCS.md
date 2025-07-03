@@ -26,10 +26,6 @@ Follow these steps to get the add-on installed on your system:
       - Click "Install" button.  
       - Wait for the installation to complete
 
-      **Note**: Missing add-on? Enable advanced mode in your user profile page
-
-      ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-silabs-multiprotocol/images/description-picture_2.png)
-
 ## How to use
 
 The add-on needs a Silicon Labs based wireless module accessible through a 
@@ -42,7 +38,7 @@ Once the firmware is loaded follow the following steps:
 
 **NOTE:** the Web frontend is only accessible when OpenThread is enabled (see below).
 
-![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-silabs-multiprotocol/images/description-picture_3.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-silabs-multiprotocol/images/description-picture_2.png)
 
 ### Zigbee
 
@@ -66,9 +62,9 @@ To use Zigbee with Z2M configure the Integration as follows:
 5. After completing the configuration,start the Zigbee2MQTT add-on. Wait for about two minutes,
  then you can click to enter the Web UI Console to add and manage devices.
 
-![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-silabs-multiprotocol/images/description-picture_4.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-silabs-multiprotocol/images/description-picture_3.png)
 
-![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-silabs-multiprotocol/images/description-picture_5.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-silabs-multiprotocol/images/description-picture_4.png)
 ### OpenThread
 
 At this point OpenThread support is experimental. This add-on makes your Home
