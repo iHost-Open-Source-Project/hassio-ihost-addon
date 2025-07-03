@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bashio
+# vim: ft=bash
+# shellcheck shell=bash
+# ==============================================================================
+# Start EmberZNet Zigbee Daemon
+# ==============================================================================
+# shellcheck disable=SC2015
+ezsp_listen_port="$(bashio::addon.port 9999)"
+
+# If user port is not set, listen on local interface only
+if ! bashio::var.has_value "${ezsp_listen_port}"; then
+    ezsp_listen_port="9999"
+fi
+
+bashio::log.info "Starting zigbeed-tcp..."
+exec /usr/bin/socat TCP-LISTEN:${ezsp_listen_port},reuseaddr,fork FILE:/tmp/ttyZigbee,raw,echo=0,b115200

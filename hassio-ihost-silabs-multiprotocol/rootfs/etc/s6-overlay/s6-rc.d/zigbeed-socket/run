@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bashio
+# vim: ft=bash
+# shellcheck shell=bash
+# ==============================================================================
+# Start EmberZNet Zigbee Daemon
+# ==============================================================================
+# shellcheck disable=SC2015
+bashio::log.info "Starting zigbeed-socket..."
+exec /usr/bin/socat pty,link=/tmp/ttyZigbee pty,link=/tmp/ttyZigbeeNCP

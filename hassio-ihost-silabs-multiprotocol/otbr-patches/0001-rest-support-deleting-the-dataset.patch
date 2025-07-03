@@ -1,0 +1,103 @@
+diff --git a/util/third_party/ot-br-posix/src/rest/openapi.yaml b/util/third_party/ot-br-posix/src/rest/openapi.yaml
+index 4a033eb77..3cc2ef8f3 100644
+--- a/util/third_party/ot-br-posix/src/rest/openapi.yaml
++++ b/util/third_party/ot-br-posix/src/rest/openapi.yaml
+@@ -248,6 +248,18 @@ paths:
+           description: Invalid request body.
+         "409":
+           description: Writing active operational dataset rejected because Thread network is active.
++    delete:
++      tags:
++        - node
++      summary: Deletes the active operational dataset
++      description: |-
++        Deletes the the active operational dataset on the current node. Only allowed if the Thread node
++        is inactive.
++      responses:
++        "200":
++          description: Successfully deleted the active operational dataset.
++        "409":
++          description: Deleting active operational dataset rejected because Thread network is active.
+   /node/dataset/pending:
+     get:
+       tags:
+@@ -291,6 +303,15 @@ paths:
+           description: Successfully created the pending operational dataset.
+         "400":
+           description: Invalid request body.
++    delete:
++      tags:
++        - node
++      summary: Deletes the pending operational dataset
++      description: |-
++        Deletes the the pending operational dataset on the current node.
++      responses:
++        "200":
++          description: Successfully deleted the active operational dataset.
+ components:
+   schemas:
+     LeaderData:
+diff --git a/util/third_party/ot-br-posix/src/rest/resource.cpp b/util/third_party/ot-br-posix/src/rest/resource.cpp
+index ce154c2e5..1708faf6a 100644
+--- a/util/third_party/ot-br-posix/src/rest/resource.cpp
++++ b/util/third_party/ot-br-posix/src/rest/resource.cpp
+@@ -767,12 +767,47 @@ exit:
+     }
+ }
+ 
++void Resource::DeleteDataset(DatasetType aDatasetType, Response &aResponse) const
++{
++    otbrError                error       = OTBR_ERROR_NONE;
++    std::string              errorCode   = GetHttpStatus(HttpStatusCode::kStatusOk);
++    otOperationalDatasetTlvs datasetTlvs = {};
++
++    if (aDatasetType == DatasetType::kActive)
++    {
++        VerifyOrExit(otThreadGetDeviceRole(mInstance) == OT_DEVICE_ROLE_DISABLED, error = OTBR_ERROR_INVALID_STATE);
++    }
++
++    if (aDatasetType == DatasetType::kActive)
++    {
++        VerifyOrExit(otDatasetSetActiveTlvs(mInstance, &datasetTlvs) == OT_ERROR_NONE, error = OTBR_ERROR_REST);
++    }
++    else if (aDatasetType == DatasetType::kPending)
++    {
++        VerifyOrExit(otDatasetSetPendingTlvs(mInstance, &datasetTlvs) == OT_ERROR_NONE, error = OTBR_ERROR_REST);
++    }
++    aResponse.SetResponsCode(errorCode);
++
++exit:
++    if (error == OTBR_ERROR_INVALID_STATE)
++    {
++        ErrorHandler(aResponse, HttpStatusCode::kStatusConflict);
++    }
++    else if (error != OTBR_ERROR_NONE)
++    {
++        ErrorHandler(aResponse, HttpStatusCode::kStatusInternalServerError);
++    }
++}
++
+ void Resource::Dataset(DatasetType aDatasetType, const Request &aRequest, Response &aResponse) const
+ {
+     std::string errorCode;
+ 
+     switch (aRequest.GetMethod())
+     {
++    case HttpMethod::kDelete:
++        DeleteDataset(aDatasetType, aResponse);
++        break;
+     case HttpMethod::kGet:
+         GetDataset(aDatasetType, aRequest, aResponse);
+         break;
+diff --git a/util/third_party/ot-br-posix/src/rest/resource.hpp b/util/third_party/ot-br-posix/src/rest/resource.hpp
+index 7982843b3..788dcd87d 100644
+--- a/util/third_party/ot-br-posix/src/rest/resource.hpp
++++ b/util/third_party/ot-br-posix/src/rest/resource.hpp
+@@ -142,6 +142,7 @@ private:
+     void GetDataRloc(Response &aResponse) const;
+     void GetDataset(DatasetType aDatasetType, const Request &aRequest, Response &aResponse) const;
+     void SetDataset(DatasetType aDatasetType, const Request &aRequest, Response &aResponse) const;
++    void DeleteDataset(DatasetType aDatasetType, Response &aResponse) const;
+ 
+     void DeleteOutDatedDiagnostic(void);
+     void UpdateDiag(std::string aKey, std::vector<otNetworkDiagTlv> &aDiag);

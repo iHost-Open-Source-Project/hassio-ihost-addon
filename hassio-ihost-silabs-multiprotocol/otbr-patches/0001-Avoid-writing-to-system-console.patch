@@ -1,0 +1,13 @@
+diff --git a/util/third_party/ot-br-posix/src/common/logging.cpp b/util/third_party/ot-br-posix/src/common/logging.cpp
+index 3022c8d8d..ba70b38da 100644
+--- a/util/third_party/ot-br-posix/src/common/logging.cpp
++++ b/util/third_party/ot-br-posix/src/common/logging.cpp
+@@ -99,7 +99,7 @@ void otbrLogInit(const char *aProgramName, otbrLogLevel aLevel, bool aPrintStder
+ 
+     if (!sSyslogDisabled)
+     {
+-        openlog(ident, (LOG_CONS | LOG_PID) | (aPrintStderr ? LOG_PERROR : 0), OTBR_SYSLOG_FACILITY_ID);
++        openlog(ident, LOG_PID | (aPrintStderr ? LOG_PERROR : 0), LOG_USER);
+     }
+     sLevel        = aLevel;
+     sDefaultLevel = sLevel;
