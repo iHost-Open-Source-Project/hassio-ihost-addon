@@ -12,7 +12,7 @@ via [SONOFF Dongle Flasher Add-on][dongle-flasher-addon].
 
 Follow these steps to get the add-on installed on your system:
 
-1. Add eWeLink-Remote Gateway Add-on to Repositories
+1. Add Silicon Labs Multiprotocol Add-on to Repositories
       - Go to the Add-on Store → Click the More button (⋮) in the upper-right corner → Select Repositories
         Paste the following URL:https://github.com/iHost-Open-Source-Project/hassio-ihost-addon
       - Or, simply click the button below to add it automatically:
