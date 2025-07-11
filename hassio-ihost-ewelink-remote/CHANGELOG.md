@@ -1,5 +1,9 @@
 # Changelog  
 
+## 0.2.2  
+### Fixed  
+- Fix the issue where the automation associated with eWeLink-Remote Sub-device is mistakenly triggered after restarting the MQTT Broker.
+
 ## 0.2.1  
 ### Fixed  
 - Fixed an issue where the plugin stopped working due to a misjudgment that Bluetooth integration did not exist because the WebSocket long connection interface response timed out.
