@@ -1,6 +1,6 @@
 {
     "name": "SONOFF Dongle Flasher",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "slug": "sonoff_dongle_flasher_for_ihost",
     "description": "SONOFF Dongle Flasher supports online firmware flashing for the iHost MG21 chip and the SONOFF Dongle series (ZBDongle-P and ZBDongle-E)",
     "uart": true,
