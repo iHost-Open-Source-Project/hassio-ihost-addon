@@ -1,5 +1,9 @@
 # Changelog  
 
+## 0.2.3  
+### Fixed  
+- Fixed add-on malfunction caused by accessing Home Assistant through the HTTPS protocol.
+
 ## 0.2.2  
 ### Fixed  
 - Fix the issue where the automation associated with eWeLink-Remote Sub-device is mistakenly triggered after restarting the MQTT Broker.
