@@ -1,3 +1,10 @@
+## 1.1.1 - 2025-07-18
+### Fix
+- Fix motion mapping errors  
+- Fix wireless button synchronization failure  
+- Fix the issue where synchronized devices become unsynchronized after HA Core restart  
+- Fix empty device list after WebSocket disconnection and reconnection  
+
 ## 1.1.0 - 2025-07-03
 
 ### Breaking Changes
