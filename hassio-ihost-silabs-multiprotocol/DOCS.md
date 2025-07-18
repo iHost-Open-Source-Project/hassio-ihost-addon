@@ -29,7 +29,7 @@ Follow these steps to get the add-on installed on your system:
 ## How to use
 
 The add-on needs a Silicon Labs based wireless module accessible through a 
-serial port (like ZBDongle-E or most USB based wireless adapters).
+serial port (like ZBDongle-E,iHost MG21 chip or most USB based wireless adapters).
 
 Once the firmware is loaded follow the following steps:
 
