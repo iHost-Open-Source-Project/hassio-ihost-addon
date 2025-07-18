@@ -13,7 +13,7 @@ This add-on allows you to use Zigbee and OpenThread protocol simultaneous on a
 single Silicon Labs based radio. The radio needs the RCP Multi-PAN firmware 
 installed to support multiple IEEE 802.15.4 Personal Area Networks (PAN). The 
 addon is modified based on the Silicon Labs Multiprotocol Addon and has been 
-successfully tested on the SONOFF ZBDongle-E.
+successfully tested on the SONOFF [ZBDongle-E](https://sonoff.tech/products/sonoff-zigbee-3-0-usb-dongle-plus-zbdongle-e) and [iHost MG21 chip](https://sonoff.tech/products/sonoff-ihost-smart-home-hub).
 
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
