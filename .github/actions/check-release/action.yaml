@@ -15,14 +15,21 @@ runs:
       id: get
       shell: bash
       run: |
-        response=$(curl -s -H "Accept: application/vnd.github.v3+json" \
+        response=$(curl -s -w "%{http_code}" -H "Accept: application/vnd.github.v3+json" \
           "https://api.github.com/repos/${{ inputs.owner }}/${{ inputs.repo }}/releases/latest")
         
-        current_version=$(echo "$response" | jq -r '.tag_name')
-        release_url=$(echo "$response" | jq -r '.html_url')
+        http_code="${response: -3}"
+        response_body="${response%???}"
+
+        if [ "$http_code" -ne 200 ]; then
+          echo "Failed to fetch release data. HTTP status: $http_code"
+          exit 1
+        fi
+
+        current_version=$(echo "$response_body" | jq -r '.tag_name')
+        release_url=$(echo "$response_body" | jq -r '.html_url')
         body="[CHANGELOG.md](https://github.com/${{ inputs.owner }}/${{ inputs.repo }}/releases/tag/$current_version)"
-        #body=$(echo "$response" | jq -r '.body | @json')
-        
+
         echo "current_version<<EOF" >> $GITHUB_OUTPUT
         echo "$current_version" >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
@@ -40,6 +47,7 @@ runs:
         echo "Body: $body"
 
     - name: Compare with previous release
+      if: steps.get.outputs.current_version != null && steps.get.outputs.current_version != ''
       id: compare
       uses: ./.github/actions/compare-with-previous
       with:

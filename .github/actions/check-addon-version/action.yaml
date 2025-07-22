@@ -23,30 +23,39 @@ runs:
       shell: bash
       run: |
         config_url="https://raw.githubusercontent.com/home-assistant/addons/refs/heads/master/${{ inputs.addon_folder_name }}/${{ inputs.config }}"
-        
-        response=$(curl -s -H "Accept: application/vnd.github.v3+json" $config_url)
-        
-        current_version=$(echo "$response" | yq -r '.version')
+
+        response=$(curl -s -w "%{http_code}" -H "Accept: application/vnd.github.v3+json" "$config_url")
+
+        http_code="${response: -3}"
+        response_body="${response%???}"
+
+        if [ "$http_code" -ne 200 ]; then
+          echo "Failed to fetch config file. HTTP status: $http_code"
+          exit 1
+        fi
+
+        current_version=$(echo "$response_body" | yq -r '.version')
         release_url="https://github.com/home-assistant/addons/blob/master/${{ inputs.addon_folder_name }}/${{ inputs.config }}"
         body="[CHANGELOG.md](https://github.com/home-assistant/addons/blob/master/${{ inputs.addon_folder_name }}/${{ inputs.change_log }})"
-        
+
         echo "current_version<<EOF" >> $GITHUB_OUTPUT
         echo "$current_version" >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
-        
+
         echo "release_url<<EOF" >> $GITHUB_OUTPUT
         echo "$release_url" >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
-        
+
         echo "body<<EOF" >> $GITHUB_OUTPUT
         echo "$body" >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
-        
+
         echo "Current release: $current_version"
         echo "Release url: $release_url"
         echo "Body: $body"
 
     - name: Compare with previous release
+      if: steps.get.outputs.current_version != null && steps.get.outputs.current_version != ''
       id: compare
       uses: ./.github/actions/compare-with-previous
       with:

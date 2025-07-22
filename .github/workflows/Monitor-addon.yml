@@ -41,7 +41,7 @@ jobs:
         with:
           addon_folder_name:  matter_server
 
-      - name: Check Matter-Server-Addon release
+      - name: Check OTBR-Addon release
         uses: ./.github/actions/check-addon-version
         with:
           addon_folder_name: openthread_border_router
