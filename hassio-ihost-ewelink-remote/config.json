@@ -1,6 +1,6 @@
 {
   "name": "eWeLink-Remote Gateway",
-  "version": "0.2.4",
+  "version": "0.2.3",
   "slug": "ewelink_remote",
   "description": "eWeLink-Remote Gateway Add-on supports adding eWeLink-Remote sub-devices R5, R5W, S-Mate, S-Mate2 to Home Assistant as trigger conditions for automation",
   "startup": "application",
