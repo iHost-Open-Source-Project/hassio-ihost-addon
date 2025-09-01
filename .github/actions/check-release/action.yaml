@@ -15,7 +15,7 @@ runs:
       id: get
       shell: bash
       run: |
-        response=$(curl -s -w "%{http_code}" -H "Accept: application/vnd.github.v3+json" \
+        response=$(curl -s -L -w "%{http_code}" -H "Accept: application/vnd.github.v3+json" \
           "https://api.github.com/repos/${{ inputs.owner }}/${{ inputs.repo }}/releases/latest")
         
         http_code="${response: -3}"
