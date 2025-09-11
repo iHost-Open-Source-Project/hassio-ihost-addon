@@ -11,10 +11,23 @@ eWeLink-Remote Gateway add-on is an eWeLink-Remote Gateway gateway that supports
 
 
 ## Prerequisite
-To use the eWeLink-Remote Gateway Add-on, make sure your Home Assistant setup meets the following conditions:
-- The device running Home Assistant must have a functional Bluetooth module (if there is no Bluetooth module, you can configure a Bluetooth Dongle).
-- Enable Bluetooth integration
-- Bluetooth Passive Scanning must be enabled in Home Assistant.
+A working Bluetooth, which can be the Bluetooth on the hardware running Home Assistant, a Bluetooth Dongle, or a Bluetooth proxy device 
+
+### Non-Bluetooth Agent
+- Go to Settings -> Select Devices and Services ->  Enable Bluetooth integration
+- To enable Bluetooth passive scanning: Go to Bluetooth Integration > Configuration > Configure Bluetooth Options, check Passive Scanning, and click Submit.
+
+### Using Bluetooth Agent
+#### Install the ble_passthrough Custom Integration
+- Installing HACS
+- Open HACS → top-right menu → Custom repositories.
+- Add the repository URL: https://github.com/iHost-Open-Source-Project/ble_passthrough. Select *Integration* as the category
+- Search for BLE Passthrough in HACS and install it.
+- After installation, add the following to your configuration.yaml
+```yaml
+ble_passthrough:
+```
+- Save the file and restart Home Assistant.
 
 ## Installation
 1. Go to the Add-on Store → Click the **More** button (⋮) in the upper-right corner → Select **Repositories**  
