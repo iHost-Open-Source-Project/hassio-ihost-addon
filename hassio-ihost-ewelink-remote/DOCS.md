@@ -3,12 +3,23 @@
 eWeLink-Remote Gateway add-on is an eWeLink-Remote Gateway gateway that supports adding eWeLink-Remote sub-devices and syncing sub-devices  to Home Assistant,such as  **[R5](https://sonoff.tech/product/smart-wall-switches/r5/),[R5W](https://sonoff.tech/product/smart-wall-switches/r5/),[S-Mate](https://sonoff.tech/product/diy-smart-switches/s-mate/),[S-Mate2](https://sonoff.tech/product/diy-smart-switches/s-mate/)**. You can select eWeLink-Remote sub-devices in Home Assistant Automations and trigger automations through single-click,double-click,and long-press events reported by eWeLink-Remote Gateway sub-devices.**[Learn more](https://sonoff.tech/news-and-events/what-is-ewelink-remote-control/)** about eWeLink-Remote.
 
 ## 2. Prerequisite
-To use the eWeLink-Remote Gateway Add-on, make sure your Home Assistant setup meets the following conditions:
-- The device running Home Assistant must have a functional Bluetooth module (if there is no Bluetooth module, you can configure a Bluetooth Dongle).
-- Enable Bluetooth integration
-- Bluetooth Passive Scanning must be enabled in Home Assistant.
-    - To enable Bluetooth passive scanning: 
-    Go to Bluetooth Integration > Configuration > Configure Bluetooth Options, check Passive Scanning, and click Submit. 
+A working Bluetooth, which can be the Bluetooth on the hardware running Home Assistant, a Bluetooth Dongle, or a Bluetooth proxy device 
+
+### 2.1 Non-Bluetooth Agent
+- Go to Settings -> Select Devices and Services ->  Enable Bluetooth integration
+- To enable Bluetooth passive scanning: Go to Bluetooth Integration > Configuration > Configure Bluetooth Options, check Passive Scanning, and click Submit.
+
+### 2.2 Using Bluetooth Agent
+#### Install the ble_passthrough Custom Integration
+- Installing HACS
+- Open HACS → top-right menu → Custom repositories.
+- Add the repository URL: https://github.com/iHost-Open-Source-Project/ble_passthrough. Select *Integration* as the category
+- Search for BLE Passthrough in HACS and install it.
+- After installation, add the following to your configuration.yaml
+```yaml
+ble_passthrough:
+```
+- Save the file and restart Home Assistant.
 
 ## 3. How to Install eWeLink-Remote Gateway Add-on?
 ### 3.1 Add eWeLink-Remote Gateway Add-on to Repositories
