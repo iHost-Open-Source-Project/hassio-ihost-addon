@@ -1,5 +1,9 @@
 # Changelog  
 
+## 0.3.0  
+### Added  
+- Supports Bluetooth proxy. You need to install BLE Passthrough integration through HACS to listen to Bluetooth broadcasts.
+
 ## 0.2.4  
 ### Fixed  
 - Fix the issue where the add-on fails to start when multiple Bluetooth devices are present.
