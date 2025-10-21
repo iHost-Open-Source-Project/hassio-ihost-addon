@@ -58,7 +58,7 @@ Note: iHost power button pressed and held for 10s will shut down from hardware.
 
 Each of the 4 buttons on the top of the iHost has a blue LED indicator. On the side of the iHost, there is a LED light strip. All the 5 indicators exist as a device named **iHost Indicators**, with 5 **Select** entities, as following:
 
-![image-20250411155046569](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-hardware-control/images/ihost_indicators.png)
+![image-20250411155046569](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-hardware-control/images/v113.png)
 
 ![img](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-hardware-control/images/indicators_device.png)
 
