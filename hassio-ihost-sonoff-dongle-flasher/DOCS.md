@@ -3,7 +3,7 @@
 ![Supports armv7 Architecture](https://img.shields.io/badge/armv7-yes-green.svg) ![Supports aarch64 Architecture](https://img.shields.io/badge/aarch64-yes-green.svg) ![Supports amd64 Architecture](https://img.shields.io/badge/amd64-yes-green.svg)
 
 ## 1. Introduction
-SONOFF Dongle Flasher supports online firmware flashing for the iHost MG21 chip and the SONOFF Dongle series (ZBDongle-P, ZBDongle-E, Dongle-M, Dongle-PMG24).
+SONOFF Dongle Flasher supports online firmware flashing for the iHost MG21 chip and the SONOFF Dongle series (ZBDongle-P, ZBDongle-E, Dongle-M, Dongle-PMG24 and Dongle-LMG21).
 
 ## 2. Prerequisite
 Before using the add-on, please make sure the serial port is not in use (it is commonly occupied by services like Zigbee2MQTT or ZHA).
@@ -33,7 +33,7 @@ After installation, click **Start**  to launch the add-on. Wait until the servic
 ## 4. Use the **SONOFF Dongle Flasher Add-on** to flash Zigbee firmware
 
 Open the web interface and click **"Connect"**. The tool will automatically scan for the iHost MG21 chip and connected Zigbee Dongles on the device running Home Assistant.
-(Currently, only **SONOFF ZBDongle-P**, **SONOFF ZBDongle-E**, **SONOFF Dongle-M** and **SONOFF Dongle-PMG24** are supported.)
+(Currently, only **SONOFF ZBDongle-P**, **SONOFF ZBDongle-E**, **SONOFF Dongle-M**, **SONOFF Dongle-PMG24** and **SONOFF Dongle-LMG21** are supported.)
 
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/MG21_connect_button.png)
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/MG21_connect_scan.png) 

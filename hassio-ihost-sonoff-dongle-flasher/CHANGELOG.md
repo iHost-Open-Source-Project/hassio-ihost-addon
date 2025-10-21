@@ -1,5 +1,9 @@
 # Changelog  
 
+## 1.2.1
+### Added
+- Add support for **SONOFF Dongle-LMG21**.
+
 ## 1.2.0
 ### Added
 - Added support for **SONOFF Dongle-M** and **Dongle-PMG24**.
