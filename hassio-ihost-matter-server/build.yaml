@@ -1,7 +1,7 @@
 ---
 build_from:
-  armv7: ghcr.io/ihost-open-source-project/python-matter-server:8.0.0
+  armv7: ghcr.io/ihost-open-source-project/python-matter-server:8.1.1
 args:
-  BASHIO_VERSION: 0.16.2
+  BASHIO_VERSION: 0.17.1
   TEMPIO_VERSION: 2024.11.2
   S6_OVERLAY_VERSION: 3.1.6.2
