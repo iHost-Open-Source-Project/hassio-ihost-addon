@@ -1,5 +1,10 @@
 # Changelog  
 
+## 0.3.1  
+### Changed  
+- Adapt the latest device synchronization protocol for Home Assistant MQTT integration.
+- Add installation version restrictions for the Add-on, only supporting Home Assistant Core version 2025.9.2 and above.
+
 ## 0.3.0  
 ### Added  
 - Supports Bluetooth proxy. You need to install BLE Passthrough integration through HACS to listen to Bluetooth broadcasts.
