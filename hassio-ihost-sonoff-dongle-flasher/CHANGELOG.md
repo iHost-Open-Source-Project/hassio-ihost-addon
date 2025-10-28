@@ -1,5 +1,9 @@
 # Changelog  
 
+## 1.2.2
+### Fixed
+- Fixed the issue where firmware version could not be sorted correctly.
+
 ## 1.2.1
 ### Added
 - Add support for **SONOFF Dongle-LMG21**.
