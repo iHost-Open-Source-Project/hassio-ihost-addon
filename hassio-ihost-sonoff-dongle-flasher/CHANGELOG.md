@@ -1,5 +1,9 @@
 # Changelog  
 
+## 1.2.3
+### Fixed
+- Fixed the issue where firmware information for certain dongles could not be properly recognized.
+
 ## 1.2.2
 ### Fixed
 - Fixed the issue where firmware version could not be sorted correctly.
