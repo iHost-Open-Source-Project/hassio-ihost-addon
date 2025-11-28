@@ -1,3 +1,21 @@
+## 1.2.0 - 2025-11-28
+### Added
+#### Support for new devices and corresponding entities:
+- Air Conditioner (Entity Type: Climate)
+- CO Sensor (Entity Type: Sensor)
+- CO2 Sensor (Entity Type: Sensor)
+- PM2.5 Sensor (Entity Type: Sensor)
+- Illumination Sensor (Entity Type: Sensor)
+- Air Quality Sensor (Entity Type: Sensor)
+- Gas Sensor (Entity Type: BinarySensor)
+- Smoke Sensor (Entity Type: BinarySensor)
+- Fan (Entity Type: Fan)
+
+### Changed
+#### Optimized device synchronization behavior after Fabric reset:
+- Synchronized devices will now be automatically unsynced when the Fabric is cleared.
+- When re-pairing with a new platform, users are required to reselect the entities they want to sync, avoiding redundant synchronization and enabling more flexible control.
+
 ## 1.1.1 - 2025-07-18
 ### Fix
 - Fix motion mapping errors  
