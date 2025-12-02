@@ -301,7 +301,7 @@ Valid values:
 
 ```json
 {
-  "online":tru
+  "online":true
 }
 ```
 
