@@ -71,3 +71,6 @@ Click "Edit" to manage the added devices, select the corresponding device, and c
 **Note*:**
 - After the eWeLink-Remote sub-device is successfully configured in Home Assistant Automation, if the entity name is changed, the entity name will be displayed as "Unknown" in the automation configuration information, but it will not affect the automation scene triggering.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-ewelink-remote/images/UNknow.png)
+
+## 5. eWeLink-Remote Gateway Add-on Home Assistant MQTT
+- [Home Assistant MQTT Doc](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-ewelink-remote/MQTT.md)
