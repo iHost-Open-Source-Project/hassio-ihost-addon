@@ -6,7 +6,7 @@ This add-on is designed to replace the legacy **eWeLink Smart Home** add-on, ena
 
 ### Added
 
-1. Supports synchronizing devices from your eWeLink account to Home Assistant, with control available via LAN or cloud. Click to view the list of supported devices.
+1. Supports synchronizing devices from your eWeLink account to Home Assistant, with control available via LAN or cloud. [Click to view the list of supported devices](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-ewelink-smart-home/DOCS.md).
 2. Supports migrating devices already synchronized to Home Assistant from the legacy eWeLink Smart Home add-on to the new one, while preserving existing automations.
 3. Supports one-click synchronization of all devices.
 4. Supports refreshing the device list with a single click to retrieve the latest devices.

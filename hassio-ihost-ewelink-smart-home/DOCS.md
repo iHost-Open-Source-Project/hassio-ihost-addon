@@ -39,6 +39,7 @@ Skip this step and simply proceed to the Add-on Store to install the required ad
 2. Via Button Clicking
 
 -   Click this button to add the add-on automatically
+
     [![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FiHost-Open-Source-Project%2Fhassio-ihost-addon)
 
 ---
@@ -46,9 +47,9 @@ Skip this step and simply proceed to the Add-on Store to install the required ad
 ### 4.2 Install the Add-on
 
 1. Search for **eWeLink Smart Home** in the Add-on Store
-   ![](./images/search-for-addon.png)
+   ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/search-for-addon.png)
 2. Click **Install**
-   ![](./images/install-add-on.png)
+   ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/install-add-on.png)
 3. Wait for the installation to complete
 
 ---
@@ -56,7 +57,7 @@ Skip this step and simply proceed to the Add-on Store to install the required ad
 ### 4.3 Start the Add-on
 
 After installation, click **Start** to launch the add-on. Please wait until the service has fully started before continuing.
-_(Screenshot pending)_
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/start-addon.png)
 
 ---
 
@@ -69,13 +70,14 @@ _(Screenshot pending)_
 Return to the legacy eWeLink Smart Home add-on and upgrade it to **version 1.4.6**.
 
 **Conflict Detection**
+
 To prevent data inconsistency, the legacy and new eWeLink Smart Home add-ons **cannot run simultaneously by default**.
 After upgrading, you will see a configuration option called **Conflict Detection**, which is enabled by default.
 
 -   If disabled, both add-ons can run at the same time, but data consistency is **not guaranteed**.
 -   This configuration is **not recommended**.
 
-![](./images/conflict-detection.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/conflict-detection.png)
 
 ---
 
@@ -84,9 +86,9 @@ After upgrading, you will see a configuration option called **Conflict Detection
 Log in to the new eWeLink Smart Home add-on using the **same eWeLink account** as the legacy add-on.
 
 1. Account login
-   ![](./images/Log%20in.png)
+   ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/login.png)
 2. QR code login
-   ![](./images/QR%20code%20login%20.png)
+   ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/qr-code-login.png)
 
 ---
 
@@ -105,7 +107,7 @@ During migration:
 -   Do not interrupt or close the process.
 -   Home Assistant Core will be restarted once during migration.
 
-![](./images/migrate-now.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/migrate-now.png)
 
 #### 5.3.2 Stop the Legacy Add-on
 
@@ -113,20 +115,20 @@ To ensure data integrity, the system will automatically stop the legacy add-on.
 
 If stopping fails (for example, if the legacy add-on is running in a standalone container), manually stop it and then return to the new add-on page and click **Stopped, Continue Migration**.
 
-![](./images/stopping-addon.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/stopping-addon.png)
 
 #### 5.3.3 Migration in Progress
 
 Once the legacy add-on has stopped successfully, data migration will begin automatically.
 Home Assistant Core will restart once, typically taking **2–3 minutes**.
 
-![](./images/migrate-data.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/migrate-data.png)
 
 #### 5.3.4 Migration Completed
 
 After a successful migration, devices previously added to Home Assistant via the legacy add-on will appear as **synced** in the new add-on.
 
-![](./images/migrate-complete.png)
+![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/migrate-complete.png)
 
 #### 5.3.5 Cancel Migration
 
@@ -150,21 +152,21 @@ When syncing devices in the new add-on, **new devices and entities** will be cre
 ### 6.1 Log In to Your eWeLink Account
 
 1. Account login
-   ![](./images/Log%20in.png)
+   ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/login.png)
 2. QR code login
-   ![](./images/QR%20code%20login%20.png)
+   ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/qr-code-login.png)
 
 ---
 
 ### 6.2 Device List
 
 1. Devices are divided into **LAN devices** and **cloud devices**, distinguished by the icon in the top-right corner of each device card.
-   ![](./images/LAN%20and%20Cloud.png)
+   ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/lan-and-cloud.png)
 2. If a device supports both LAN and cloud control, **LAN control is prioritized**, and the LAN icon will be shown.
 3. **Refresh device list**:
     - LAN devices refresh automatically every **30 seconds**
     - Cloud devices require manual refresh via the account menu in the top-right corner
-      ![](./images/Refresh.png)
+      ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/refresh-device-list.png)
 4. **Unsupported devices** may appear in the list and will be gradually supported in future releases.
 
 ---
@@ -173,13 +175,13 @@ When syncing devices in the new add-on, **new devices and entities** will be cre
 
 If you choose not to migrate legacy data, or if no legacy data exists, you can sync devices individually by clicking **Sync** on the device card.
 
-## ![](./images/Sync.png)
+## ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/sync-one-device.png)
 
 ### 6.4 Sync All Devices
 
 You may also click **Sync All** in the top-right corner to add all supported devices under your account to Home Assistant.
 
-## ![](./images/Sync%20all.png)
+## ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/sync-all.png)
 
 ## 7. Viewing Synced Devices in Home Assistant
 
