@@ -1,0 +1,42 @@
+{
+    "name": "eWeLink Smart Home",
+    "version": "1.0.0",
+    "slug": "ewelink_smart_home_for_homeassistant_slug",
+    "description": "Integrate eWeLink with Home Assistant via MQTT",
+    "url": "https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/tree/master/hassio-ihost-hardware-control",
+    "startup": "application",
+    "boot": "auto",
+    "arch": ["armv7", "aarch64", "amd64"],
+    "init": false,
+    "panel_icon": "mdi:atom-variant",
+    "panel_title": "eWeLink Smart Home",
+    "ingress": true,
+    "ingress_port": 8325,
+    "ingress_stream": true,
+    "host_network": true,
+    "homeassistant_api": true,
+    "hassio_role": "admin",
+    "hassio_api": true,
+    "services": ["mqtt:need"],
+    "map": [
+        {
+            "type": "addon_config",
+            "read_only": false,
+            "path": "/Sonoff-Smart-Home-Addon"
+        }
+    ],
+    "options": {
+        "data_path": "/Sonoff-Smart-Home-Addon",
+        "mqtt": {}
+    },
+    "schema": {
+        "data_path": "str",
+        "mqtt": {
+            "server": "str?",
+            "username": "str?",
+            "password": "str?"
+        }
+    },
+    "image": "ghcr.io/ihost-open-source-project/hassio-ihost-ewelink-smart-home-{arch}",
+    "homeassistant": "2025.9.2"
+}
