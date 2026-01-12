@@ -1,0 +1,60 @@
+name: "🐞 Bug Report"
+description: "Report a bug in an iHost Home Assistant add-on."
+title: "[Bug]: "
+labels:
+  - bug
+  - needs-triage
+body:
+  - type: input
+    id: addon_name
+    attributes:
+      label: "Add-on Name"
+      description: "Which add-on is affected? (e.g., eWeLink-Remote Gateway or hassio-ihost-ewelink-remote)"
+      placeholder: "eWeLink-Remote Gateway"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: "Problem Description"
+      description: "What happened? What did you expect to happen?"
+      placeholder: "Describe the issue clearly..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Logs"
+      description: |
+        Paste the full relevant logs here.
+        You may also drag and drop log files directly into this field.
+        The more complete the logs, the easier it is for us to diagnose the issue.
+      placeholder: |
+        Paste logs here, or drag and drop log files...
+    validations:
+      required: true
+
+
+  - type: textarea
+    id: reproduce_steps
+    attributes:
+      label: "Steps to Reproduce (Optional)"
+      description: "If you can reproduce it, list the steps."
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Screenshots (Optional)"
+      description: "If applicable, add screenshots to help explain the problem. You can drag and drop images here."
+      placeholder: |
+        Drag and drop screenshots here, or paste images directly.
+    validations:
+      required: false

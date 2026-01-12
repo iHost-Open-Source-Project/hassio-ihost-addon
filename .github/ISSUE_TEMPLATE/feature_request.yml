@@ -1,0 +1,24 @@
+name: "✨ Feature Request"
+description: "Suggest a new feature or improvement for an iHost add-on."
+title: "[Feature]: "
+labels:
+  - enhancement
+  - needs-triage
+body:
+  - type: input
+    id: addon_name
+    attributes:
+      label: "Add-on Name"
+      description: "Which add-on is this request for?"
+      placeholder: "eWeLink-Remote Gateway"
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature_description
+    attributes:
+      label: "Request Description"
+      description: "Describe the feature and the problem it solves."
+      placeholder: "Describe the feature request..."
+    validations:
+      required: true

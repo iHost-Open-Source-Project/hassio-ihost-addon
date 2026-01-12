@@ -1,0 +1,47 @@
+name: "❓ Usage Question"
+description: "Ask a question about how to use an iHost add-on."
+title: "[Question]: "
+labels:
+  - question
+  - needs-triage
+body:
+  - type: input
+    id: addon_name
+    attributes:
+      label: "Add-on Name"
+      description: "Which add-on is your question about?"
+      placeholder: "eWeLink-Remote Gateway"
+    validations:
+      required: true
+
+  - type: textarea
+    id: question_description
+    attributes:
+      label: "Question / Issue Description"
+      description: "What are you trying to do? What is confusing or not working?"
+      placeholder: "Describe your question..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Logs (Optional)"
+      description: "If you have logs, paste as much as possible."
+      render: shell
+      placeholder: |
+        Paste logs here (optional)...
+    validations:
+      required: false
+
+  - type: textarea
+    id: reproduce_steps
+    attributes:
+      label: "Steps to Reproduce (Optional)"
+      description: "If your question is about an error, list steps to reproduce."
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: false
