@@ -18,7 +18,12 @@ body:
     id: feature_description
     attributes:
       label: "Request Description"
-      description: "Describe the feature and the problem it solves."
-      placeholder: "Describe the feature request..."
+      description: |
+        Describe the feature and the problem it solves.
+        Please include why this feature is useful and in which scenario it will be used.
+      placeholder: |
+        What problem does this feature solve?
+        Who would benefit from it?
+        How should it work?
     validations:
       required: true
