@@ -1,6 +1,6 @@
 {
     "name": "eWeLink Smart Home",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "slug": "ewelink_smart_home_for_homeassistant_slug",
     "description": "Integrate eWeLink with Home Assistant via MQTT",
     "url": "https://github.com/iHost-Open-Source-Project/hassio-ihost-addon",
