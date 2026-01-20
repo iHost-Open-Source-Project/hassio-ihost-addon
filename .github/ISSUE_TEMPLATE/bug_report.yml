@@ -5,14 +5,28 @@ labels:
   - bug
   - needs-triage
 body:
-  - type: input
+  - type: dropdown
     id: addon_name
     attributes:
       label: "Add-on Name"
-      description: "Which add-on is affected? (e.g., eWeLink-Remote Gateway or hassio-ihost-ewelink-remote)"
-      placeholder: "eWeLink-Remote Gateway"
+      description: "Which add-on is affected?"
+      options:
+        - "-- Please select an add-on --"
+        - "eWeLink Smart Home"
+        - "eWeLink-Remote Gateway"
+        - "SONOFF Dongle Flasher"
+        - "iHost Hardware Control"
+        - "Matter Bridge for iHost"
+        - "Silicon Labs Multiprotocol"
+        - "OpenThread Border Router"
+        - "Node-RED"
+        - "ESPHome Device Builder"
+        - "Matter Server"
+        - "Advanced SSH & Web Terminal"
+        - "Zigbee2MQTT"
     validations:
       required: true
+
 
   - type: textarea
     id: problem_description
