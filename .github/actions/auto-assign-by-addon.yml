@@ -1,0 +1,124 @@
+name: Auto-assign by Add-on Name
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto assign based on Add-on Name
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body = issue.body || "";
+
+            // 1) Parse "Add-on Name" section from issue body
+            // Expected markdown rendered by issue form:
+            // ### Add-on Name
+            //
+            // eWeLink-Remote Gateway
+            const re = /###\s*Add-on Name\s*\r?\n\r?\n([^\r\n]+)/i;
+            const m = body.match(re);
+            if (!m) {
+              core.info("Add-on Name section not found. Skip.");
+              return;
+            }
+
+            const addon = m[1].trim();
+            core.info(`Parsed addon: "${addon}"`);
+
+            // 2) Sentinel option (no real selection)
+            const sentinel = "-- Please select an add-on --";
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issue_number = issue.number;
+
+            // Optional: label when not selected
+            const NOT_SELECTED_LABEL = "needs-addon-selection";
+
+            if (!addon || addon === sentinel) {
+              core.info("Addon not selected. Skip assignment.");
+
+              // Add a label to remind user (optional)
+              try {
+                await github.rest.issues.addLabels({
+                  owner,
+                  repo,
+                  issue_number,
+                  labels: [NOT_SELECTED_LABEL],
+                });
+                core.info(`Added label: ${NOT_SELECTED_LABEL}`);
+              } catch (e) {
+                core.info(`Failed to add label (maybe label doesn't exist yet): ${e.message}`);
+              }
+              return;
+            }
+
+            // 3) Mapping: dropdown option -> assignees GitHub usernames
+            // TODO: Replace these with your real owners
+            const mapping = {
+              "eWeLink Smart Home": ["SuiKaSan"],
+              "eWeLink-Remote Gateway": ["crafting-vision"],
+              "SONOFF Dongle Flasher": ["SuiKaSan"],
+              "iHost Hardware Control": ["crafting-vision"],
+              "Matter Bridge for iHost": ["crafting-vision"],
+              "Silicon Labs Multiprotocol": ["HiconKong"],
+              "OpenThread Border Router": ["HiconKong"],
+              "Node-RED": ["SuiKaSan"],
+              "ESPHome Device Builder": ["crafting-vision"],
+              "Matter Server": ["crafting-vision"],
+              "Advanced SSH & Web Terminal": ["crafting-vision"],
+              "Zigbee2MQTT": ["crafting-vision"],
+            };
+
+            const assignees = mapping[addon];
+            if (!assignees || assignees.length === 0 || assignees.includes("REPLACE_ME")) {
+              core.info(`No valid assignees configured for addon "${addon}". Skip assignment.`);
+              return;
+            }
+
+            // 4) Remove the "needs-addon-selection" label if present (optional cleanup)
+            try {
+              await github.rest.issues.removeLabel({
+                owner,
+                repo,
+                issue_number,
+                name: NOT_SELECTED_LABEL,
+              });
+              core.info(`Removed label: ${NOT_SELECTED_LABEL}`);
+            } catch (e) {
+              // ignore if label not present
+            }
+
+            // 5) (Optional) Clear existing assignees first, then set new ones
+            // This makes "edited" updates deterministic.
+            const currentAssignees = (issue.assignees || []).map(a => a.login);
+            if (currentAssignees.length > 0) {
+              try {
+                await github.rest.issues.removeAssignees({
+                  owner,
+                  repo,
+                  issue_number,
+                  assignees: currentAssignees,
+                });
+                core.info(`Removed existing assignees: ${currentAssignees.join(", ")}`);
+              } catch (e) {
+                core.info(`Failed to remove existing assignees: ${e.message}`);
+              }
+            }
+
+            // 6) Add assignees
+            await github.rest.issues.addAssignees({
+              owner,
+              repo,
+              issue_number,
+              assignees,
+            });
+
+            core.info(`Assigned "${addon}" to: ${assignees.join(", ")}`);
