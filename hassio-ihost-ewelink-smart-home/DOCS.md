@@ -54,7 +54,15 @@ Skip this step and simply proceed to the Add-on Store to install the required ad
 
 ---
 
-### 4.3 Start the Add-on
+### 4.3 About MQTT Configuration
+
+We provide additional MQTT configuration options to accommodate users who rely on third-party MQTT brokers.
+If you are not using a third-party MQTT broker, simply enable the add-on.
+Once enabled, it will automatically start Home Assistant’s official Mosquitto broker and connect using the default credentials. No manual configuration is required. After successful startup, the add-on is ready to use.
+
+---
+
+### 4.4 Start the Add-on
 
 After installation, click **Start** to launch the add-on. Please wait until the service has fully started before continuing.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/start-addon.png)
