@@ -2,6 +2,20 @@
 
 This add-on is designed to replace the legacy **eWeLink Smart Home** add-on, enabling devices under your eWeLink account to be synchronized with **Home Assistant** and controlled via either the local network or the cloud. The legacy eWeLink Smart Home add-on will no longer be maintained or updated, as some of its entity implementations rely on deprecated methods. The new project delivers more robust, future-oriented device support.
 
+## 1.0.4
+
+### Added
+
+- Introduced a Button entity for the following device models:
+  POW / POWR3 / S31 / THR316 / THR316D / THR320 / THR320D / S40TPB / S40TPA / POWR316D / POWR320D / POWR316 / POWCT / S60TPF / S60TP.
+  Pressing the button initiates a temporary active reporting cycle (default interval: 60 seconds), during which the device periodically pushes state updates to Home Assistant. The specific reported states depend on the device model.
+
+## 1.0.3
+
+### Fixed
+
+- Fixed an issue where eWeLink accounts could be automatically logged out under certain conditions.
+
 ## 1.0.2
 
 ### Changed
