@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.1
+
+### Added
+
+-   Force Dongle-PMG24 flashed with Router firmware into pairing mode when it is powered on.
+
 ## 1.3.0
 
 ### Added
