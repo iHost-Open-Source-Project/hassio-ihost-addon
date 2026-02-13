@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.2
+
+### Fixed
+
+-   Fixed an issue where certain dongles could not be properly recognized during scanning.
+
 ## 1.3.1
 
 ### Added
