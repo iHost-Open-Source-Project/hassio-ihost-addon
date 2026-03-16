@@ -3,13 +3,6 @@
 ## About
 This repository contains a set of Home Assistant add-ons developed specifically for **SONOFF iHost**.
 
-## Requirements
-To use these add-ons, the following requirements must be met:
-
-* Home Assistant must be running on **iHost**, installed from a **pre-flashed microSD card**.
-  👉 For setup instructions, please refer to the [Operation Guide](https://github.com/iHost-Open-Source-Project/ha-operating-system?tab=readme-ov-file#readme)
-
-
 ## Installation
 1. Go to the Add-on Store → Click the **More** button (⋮) in the upper-right corner → Select **Repositories**  
 2. Paste the following URL:  
