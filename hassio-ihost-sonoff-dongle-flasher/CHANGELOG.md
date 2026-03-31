@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.3
+
+### Fixed
+
+-   Force Dongle-E and Dongle-LMG21 flashed with Router firmware into pairing mode when it is powered on.
+-   Fixed an issue where certain dongles identified as running unknown firmware could not have a firmware selected for flashing.
+
 ## 1.3.2
 
 ### Fixed
