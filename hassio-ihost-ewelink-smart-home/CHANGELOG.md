@@ -2,6 +2,16 @@
 
 This add-on is designed to replace the legacy **eWeLink Smart Home** add-on, enabling devices under your eWeLink account to be synchronized with **Home Assistant** and controlled via either the local network or the cloud. The legacy eWeLink Smart Home add-on will no longer be maintained or updated, as some of its entity implementations rely on deprecated methods. The new project delivers more robust, future-oriented device support.
 
+## 1.1.0
+
+### Added
+
+- Added support for syncing 70+ device types from your eWeLink account to Home Assistant. These devices can be controlled via LAN or the cloud. [Click to view the list of supported devices](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/blob/master/hassio-ihost-ewelink-smart-home/DOCS.md).
+
+### Changed
+
+- Optimized the online and offline status logic for RF Bridge devices
+
 ## 1.0.4
 
 ### Added
