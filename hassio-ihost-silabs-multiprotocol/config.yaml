@@ -1,5 +1,5 @@
 ---
-version: 1.0.0
+version: 1.0.2
 slug: hassio_ihost_silabs_multiprotocol
 name: Silicon Labs Multiprotocol
 description: Zigbee and OpenThread multiprotocol add-on

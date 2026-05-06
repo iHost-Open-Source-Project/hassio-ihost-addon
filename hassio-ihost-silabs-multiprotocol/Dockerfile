@@ -116,12 +116,16 @@ RUN \
 COPY --from=cpcd-builder /usr/local/ /usr/${DEBIAN_CROSS_PREFIX}/
 COPY otbr-patches/0001-Avoid-writing-to-system-console.patch /usr/src
 COPY otbr-patches/0001-rest-support-deleting-the-dataset.patch /usr/src
+COPY zigbeed-patches/zigbeed_amd64.patch /usr/src/gecko_sdk/zigbeed_amd64.patch
 
 RUN \
     set -x \
     && cd gecko_sdk \
     && patch -p1 < /usr/src/0001-Avoid-writing-to-system-console.patch \
     && patch -p1 < /usr/src/0001-rest-support-deleting-the-dataset.patch \
+    && if [ "${DEBIAN_ARCH}" = "amd64" ]; then \
+        patch -p1 < zigbeed_amd64.patch; \
+        fi \
     && GECKO_SDK=$(pwd) \
     && slc signature trust --sdk=${GECKO_SDK} \
     && cd protocol/zigbee \

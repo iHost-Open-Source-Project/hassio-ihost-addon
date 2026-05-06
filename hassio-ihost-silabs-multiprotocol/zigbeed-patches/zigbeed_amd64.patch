@@ -1,0 +1,13 @@
+diff --git a/protocol/zigbee/app/projects/zigbeed/zigbeed.slcp b/protocol/zigbee/app/projects/zigbeed/zigbeed.slcp
+index 26063dde5..4e0a3f679 100644
+--- a/protocol/zigbee/app/projects/zigbeed/zigbeed.slcp
++++ b/protocol/zigbee/app/projects/zigbeed/zigbeed.slcp
+@@ -18,7 +18,7 @@ component:
+   - id: zigbee_xncp
+   - id: toolchain_gcc
+   - id: zigbee_stack_unix
+-  - id: zigbee_recommended_linux_arch
++  # - id: zigbee_recommended_linux_arch
+   - id: zigbee_mfglib
+   # not required by zigbeed, but could be enabled
+   - id: zigbee_r22_support
