@@ -25,9 +25,5 @@ successfully tested on the SONOFF [ZBDongle-E](https://sonoff.tech/products/sono
 is based on EZSP v16,it can only be used with Zigbee2MQTT (Z2M).
 2. Before using this add-on, you must first flash the MultiPAN firmware via [SONOFF Dongle Flasher][sonoff-dongle-flasher] or [SONOFF Dongle Flasher Add-on](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon/tree/master/hassio-ihost-sonoff-dongle-flasher).
 
-## Known Issues
-
-After enabling the **Silicon Labs Multiprotocol Add-on**, Zigbee2MQTT may report an `ASH_ERROR_TIMEOUTS` error on the first launch. 
-Restarting Zigbee2MQTT typically resolves the issue. This has been reported to Silicon Labs and is currently under investigation.
 
 [sonoff-dongle-flasher]: https://dongle.sonoff.tech/sonoff-dongle-flasher
