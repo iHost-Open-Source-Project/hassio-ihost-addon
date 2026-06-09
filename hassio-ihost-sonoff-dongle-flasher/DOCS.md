@@ -4,58 +4,58 @@
 
 ## 1. Introduction
 
-SONOFF Dongle Flasher supports online firmware flashing for the iHost MG21 chip and the SONOFF Dongle series (ZBDongle-P, ZBDongle-E, Dongle-M, Dongle-PMG24, Dongle-LMG21 and Dongle-PZG23).
+SONOFF Dongle Flasher supports online firmware flashing for the iHost MG21 chip and the SONOFF Dongle series (ZBDongle-P, ZBDongle-E, Dongle-M, Dongle-PMG24, Dongle-LMG21, Dongle-PZG23 and Dongle-MZG23).
 
-In addition to the SONOFF Dongle Flasher add-on, we also provide a [container version](https://hub.docker.com/r/ewelink/sonoff-dongle-flasher).
+In addition to the SONOFF Dongle Flasher app, we also provide a [container version](https://hub.docker.com/r/ewelink/sonoff-dongle-flasher).
 
 ## 2. Prerequisite
 
-Before using the add-on, please make sure the serial port is not in use (it is commonly occupied by services like Zigbee2MQTT or ZHA).
-During the firmware flashing process, the add-on will attempt to connect to the device and automatically check whether the serial port is occupied.
-If it is, the add-on will try to stop the conflicting service for you.
+Before using the app, please make sure the serial port is not in use (it is commonly occupied by services like Zigbee2MQTT or ZHA).
+During the firmware flashing process, the app will attempt to connect to the device and automatically check whether the serial port is occupied.
+If it is, the app will try to stop the conflicting service for you.
 [Operation Guide >](https://github.com/iHost-Open-Source-Project/ha-operating-system?tab=readme-ov-file#readme)
 
-## 3. How to Install SONOFF Dongle Flasher Add-on?
+## 3. How to Install SONOFF Dongle Flasher App?
 
-### 3.1 Add SONOFF Dongle Flasher Add-on to Repositories
+### 3.1 Add SONOFF Dongle Flasher App to Repositories
 
-Skip this step and simply proceed to the Add-on Store to install the required add-on if you have already added the add-ons from this repository (e.g., iHost Hardware Control).
+Skip this step and simply proceed to the App Store to install the required app if you have already added the apps from this repository (e.g., iHost Hardware Control).
 
 1. Via URL
 
--   Navigate to Settings > Add-on Store> Click the three-dot menu (⋮) in the top right corner and select Repositories
+-   Navigate to Settings > App Store> Click the three-dot menu (⋮) in the top right corner and select Repositories
 -   Enter the repository URL into the input box: https://github.com/iHost-Open-Source-Project/hassio-ihost-addon
 
 2. Via Button Clicking
 
--   Click this button to add the add-on automatically
+-   Click this button to add the app automatically
 
-[![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FiHost-Open-Source-Project%2Fhassio-ihost-addon)
+[![Open your Home Assistant instance and show the add app repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FiHost-Open-Source-Project%2Fhassio-ihost-addon)
 
-### 3.2 Install SONOFF Dongle Flasher Add-on
+### 3.2 Install SONOFF Dongle Flasher App
 
-1.  Search for SONOFF Dongle Flasher in the Add-ons Store.
+1.  Search for SONOFF Dongle Flasher in the App Store.
     ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/find.png)
 2.  Click Install
     ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/install_button.png)
 3.  Wait for the installation to complete
 
-### 3.3 Start the SONOFF Dongle Flasher Add-on
+### 3.3 Start the SONOFF Dongle Flasher App
 
-After installation, click **Start** to launch the add-on. Wait until the service has fully started before proceeding.
+After installation, click **Start** to launch the app. Wait until the service has fully started before proceeding.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/start_button.png)
 
-## 4. Use the **SONOFF Dongle Flasher Add-on** to flash Zigbee firmware
+## 4. Use the **SONOFF Dongle Flasher App** to flash Zigbee firmware
 
 Open the web interface and click **"Connect"**. The tool will automatically scan for the iHost MG21 chip and connected Zigbee Dongles on the device running Home Assistant.
-(Currently, only **SONOFF ZBDongle-P**, **SONOFF ZBDongle-E**, **SONOFF Dongle-M**, **SONOFF Dongle-PMG24**, **SONOFF Dongle-LMG21** and **SONOFF Dongle-PZG23** are supported.)
+(Currently, only **SONOFF ZBDongle-P**, **SONOFF ZBDongle-E**, **SONOFF Dongle-M**, **SONOFF Dongle-PMG24**, **SONOFF Dongle-LMG21**, **SONOFF Dongle-PZG23** and **SONOFF Dongle-MZG23** are supported.)
 
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/MG21_connect_button.png)
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/master/hassio-ihost-sonoff-dongle-flasher/images/MG21_connect_scan.png)
 
-> </font><font color="red">Note\*</font> Before clicking **Connect**, please make sure that **Zigbee2MQTT** and **ZHA** are stopped.Flashing requires access to the serial port, and currently, the add-on will automatically check whether the iHost serial port is occupied by Zigbee2MQTT or ZHA when you click **Connect**.
+> </font><font color="red">Note\*</font> Before clicking **Connect**, please make sure that **Zigbee2MQTT** and **ZHA** are stopped.Flashing requires access to the serial port, and currently, the app will automatically check whether the iHost serial port is occupied by Zigbee2MQTT or ZHA when you click **Connect**.
 >
-> If either service is running, the add-on will attempt to stop them automatically.
+> If either service is running, the app will attempt to stop them automatically.
 >
 > If Zigbee2MQTT or ZHA is not stopped beforehand, you may encounter device connection failures during the flashing process.\*
 
@@ -126,6 +126,6 @@ Open the web interface and click **"Connect"**. The tool will automatically scan
 >
 > **Please try:**
 >
-> -   Restart the Add-on to release the serial port.
+> -   Restart the App to release the serial port.
 > -   Verify and select the correct de vice model matching your device (ZBDongle-P).
 > -   Flash the firmware again.

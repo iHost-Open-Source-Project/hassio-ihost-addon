@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.4
+
+### Added
+
+-   Added support for **SONOFF Dongle-MZG23**.
+
 ## 1.3.3
 
 ### Fixed

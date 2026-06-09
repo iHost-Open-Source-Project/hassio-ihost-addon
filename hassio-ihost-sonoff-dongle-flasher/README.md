@@ -4,20 +4,20 @@
  
 ## About
 
-SONOFF Dongle Flasher supports online firmware flashing for the iHost MG21 chip and the SONOFF Dongle series (ZBDongle-P, ZBDongle-E, Dongle-M, Dongle-PMG24, Dongle-LMG21 and Dongle-PZG23).
+SONOFF Dongle Flasher supports online firmware flashing for the iHost MG21 chip and the SONOFF Dongle series (ZBDongle-P, ZBDongle-E, Dongle-M, Dongle-PMG24, Dongle-LMG21, Dongle-PZG23 and Dongle-MZG23).
 
-In addition to the SONOFF Dongle Flasher add-on, we also provide a [container version](https://hub.docker.com/r/ewelink/sonoff-dongle-flasher).
+In addition to the SONOFF Dongle Flasher app, we also provide a [container version](https://hub.docker.com/r/ewelink/sonoff-dongle-flasher).
 
 ## Prerequisites
 
-Before using the add-on, please make sure the serial port is not in use (it is commonly occupied by services like Zigbee2MQTT or ZHA).
-During the firmware flashing process, the add-on will attempt to connect to the device and automatically check whether the serial port is occupied.
-If it is, the add-on will try to stop the conflicting service for you.
+Before using the app, please make sure the serial port is not in use (it is commonly occupied by services like Zigbee2MQTT or ZHA).
+During the firmware flashing process, the app will attempt to connect to the device and automatically check whether the serial port is occupied.
+If it is, the app will try to stop the conflicting service for you.
 [Operation Guide >](https://github.com/iHost-Open-Source-Project/ha-operating-system?tab=readme-ov-file#readme)
 
 
 ## Installation
-1. Go to the Add-on Store → Click the **More** button (⋮) in the upper-right corner → Select **Repositories**  
+1. Go to the App Store → Click the **More** button (⋮) in the upper-right corner → Select **Repositories**  
 2. Paste the following URL:  
    [https://github.com/iHost-Open-Source-Project/hassio-ihost-addon](https://github.com/iHost-Open-Source-Project/hassio-ihost-addon)  
 3. Or, simply click the button below to add it automatically:
@@ -26,4 +26,4 @@ If it is, the add-on will try to stop the conflicting service for you.
 
 ## How to use
 
-See “Documentation” for details on how to use the SONOFF Dongle Flasher add-on.
+See “Documentation” for details on how to use the SONOFF Dongle Flasher app.
