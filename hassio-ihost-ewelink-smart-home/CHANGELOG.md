@@ -2,6 +2,23 @@
 
 This add-on is designed to replace the legacy **eWeLink Smart Home** add-on, enabling devices under your eWeLink account to be synchronized with **Home Assistant** and controlled via either the local network or the cloud. The legacy eWeLink Smart Home add-on will no longer be maintained or updated, as some of its entity implementations rely on deprecated methods. The new project delivers more robust, future-oriented device support.
 
+## 1.2.0
+
+### Added
+
+* Added support for the relay separation mode on MINIR4/MINIR4M/SN-ESP32D0-MINIR4-01(138)/CK-ESP32C3-SW-MT2(138)
+  Note: The relay separation mode requires device firmware support. If this feature is not available on your device, please upgrade the device firmware to the latest version and try again.
+* Added support for syncing sub-devices under NSPanel Pro Gen2 and Bridge-M to Home Assistant
+
+### Changed
+
+* If MQTT configuration has already been filled in at startup, core-mosquitto will no longer be forcibly installed
+
+### Fixed
+
+* Fixed an issue where the temperature of SNZB-02LD could not be reported properly
+* Fixed an occasional issue where devices could not be controlled when the Add-on restarted after restarting Home Assistant
+
 ## 1.1.0
 
 ### Added

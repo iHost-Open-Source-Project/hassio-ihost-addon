@@ -4,49 +4,49 @@
 
 **eWeLink Smart Home** is designed to replace the legacy [eWeLink Smart Home](https://github.com/CoolKit-Technologies/ha-addon). It allows you to integrate devices under your eWeLink account into **Home Assistant** via **MQTT**, enabling device control and automation directly within Home Assistant. Simply log in with your eWeLink account to sync your devices into Home Assistant.
 
-The legacy [eWeLink Smart Home](https://github.com/CoolKit-Technologies/ha-addon) add-on will **no longer be maintained or updated**. Some of its entity implementations rely on deprecated approaches, and the new project provides more robust and future-proof device support.
-If you are currently using the old add-on, don’t worry — the new add-on includes a **data migration feature**. After migration, your existing devices and automations in Home Assistant will continue to work as before. Please refer to **Step 5** for the migration process.
+The legacy [eWeLink Smart Home](https://github.com/CoolKit-Technologies/ha-addon) app will **no longer be maintained or updated**. Some of its entity implementations rely on deprecated approaches, and the new project provides more robust and future-proof device support.
+If you are currently using the old app, don’t worry — the new app includes a **data migration feature**. After migration, your existing devices and automations in Home Assistant will continue to work as before. Please refer to **Step 5** for the migration process.
 
 ---
 
-## 2. Key Differences Between the New and Legacy eWeLink Smart Home Add-ons
+## 2. Key Differences Between the New and Legacy eWeLink Smart Home Apps
 
-1. The new add-on provides **more entities** for devices synced to Home Assistant, with implementations that better align with Home Assistant standards. It will continue to expand support for more devices and capabilities, including rapid support for new SONOFF products.
-2. The new add-on **does not provide a UI for device control**. All control and automation are performed directly within Home Assistant.
-3. The new add-on **no longer supports syncing Home Assistant devices back to the eWeLink cloud**, a feature that existed in the legacy add-on.
+1. The new app provides **more entities** for devices synced to Home Assistant, with implementations that better align with Home Assistant standards. It will continue to expand support for more devices and capabilities, including rapid support for new SONOFF products.
+2. The new app **does not provide a UI for device control**. All control and automation are performed directly within Home Assistant.
+3. The new app **no longer supports syncing Home Assistant devices back to the eWeLink cloud**, a feature that existed in the legacy app.
 
 ---
 
 ## 3. Prerequisites
 
-1. MQTT integration and the **MQTT Broker add-on** are installed and enabled in Home Assistant.
+1. MQTT integration and the **MQTT Broker app** are installed and enabled in Home Assistant.
 2. You have registered an **eWeLink account** and added devices via the eWeLink mobile app.
-3. **If you are using the legacy eWeLink Smart Home add-on and wish to migrate its data**, please first upgrade it to **version 1.4.6**, then stop the legacy add-on. During migration, the system will automatically stop the legacy add-on if it is still running. Refer to **Step 5** for details.
+3. **If you are using the legacy eWeLink Smart Home app and wish to migrate its data**, please first upgrade it to **version 1.4.6**, then stop the legacy app. During migration, the system will automatically stop the legacy app if it is still running. Refer to **Step 5** for details.
 
 ---
 
-## 4. Installing the eWeLink Smart Home Add-on
+## 4. Installing the eWeLink Smart Home App
 
 ### 4.1 Add the Repository
 
-Skip this step and simply proceed to the Add-on Store to install the required add-on if you have already added the add-ons from this repository (e.g., iHost Hardware Control).
+Skip this step and simply proceed to the App Store to install the required app if you have already added the apps from this repository (e.g., iHost Hardware Control).
 
 1. Via URL
 
--   Navigate to Settings > Add-on Store> Click the three-dot menu (⋮) in the top right corner and select Repositories
+-   Navigate to Settings > App Store> Click the three-dot menu (⋮) in the top right corner and select Repositories
 -   Enter the repository URL into the input box: https://github.com/iHost-Open-Source-Project/hassio-ihost-addon
 
 2. Via Button Clicking
 
--   Click this button to add the add-on automatically
+-   Click this button to add the app automatically
 
-    [![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FiHost-Open-Source-Project%2Fhassio-ihost-addon)
+    [![Open your Home Assistant instance and show the add app repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FiHost-Open-Source-Project%2Fhassio-ihost-addon)
 
 ---
 
-### 4.2 Install the Add-on
+### 4.2 Install the App
 
-1. Search for **eWeLink Smart Home** in the Add-on Store
+1. Search for **eWeLink Smart Home** in the App Store
    ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/search-for-addon.png)
 2. Click **Install**
    ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/install-add-on.png)
@@ -57,41 +57,41 @@ Skip this step and simply proceed to the Add-on Store to install the required ad
 ### 4.3 About MQTT Configuration
 
 We provide additional MQTT configuration options to accommodate users who rely on third-party MQTT brokers.
-If you are not using a third-party MQTT broker, simply enable the add-on.
-Once enabled, it will automatically start Home Assistant’s official Mosquitto broker and connect using the default credentials. No manual configuration is required. After successful startup, the add-on is ready to use.
+If you are not using a third-party MQTT broker, simply enable the app.
+Once enabled, it will automatically start Home Assistant’s official Mosquitto broker and connect using the default credentials. No manual configuration is required. After successful startup, the app is ready to use.
 
 ---
 
-### 4.4 Start the Add-on
+### 4.4 Start the App
 
-After installation, click **Start** to launch the add-on. Please wait until the service has fully started before continuing.
+After installation, click **Start** to launch the app. Please wait until the service has fully started before continuing.
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/start-addon.png)
 
 ---
 
-## 5. Migrating Data From the Legacy eWeLink Smart Home Add-on
+## 5. Migrating Data From the Legacy eWeLink Smart Home App
 
-> If you do not need to migrate data from the legacy add-on, you may skip this section and proceed to **Step 6**.
+> If you do not need to migrate data from the legacy app, you may skip this section and proceed to **Step 6**.
 
-### 5.1 **Important**: Upgrade the Legacy Add-on to Version 1.4.6
+### 5.1 **Important**: Upgrade the Legacy App to Version 1.4.6
 
-Return to the legacy eWeLink Smart Home add-on and upgrade it to **version 1.4.6**.
+Return to the legacy eWeLink Smart Home app and upgrade it to **version 1.4.6**.
 
 **Conflict Detection**
 
-To prevent data inconsistency, the legacy and new eWeLink Smart Home add-ons **cannot run simultaneously by default**.
+To prevent data inconsistency, the legacy and new eWeLink Smart Home apps **cannot run simultaneously by default**.
 After upgrading, you will see a configuration option called **Conflict Detection**, which is enabled by default.
 
--   If disabled, both add-ons can run at the same time, but data consistency is **not guaranteed**.
+-   If disabled, both apps can run at the same time, but data consistency is **not guaranteed**.
 -   This configuration is **not recommended**.
 
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/conflict-detection.png)
 
 ---
 
-### 5.2 Log In to the New Add-on
+### 5.2 Log In to the New App
 
-Log in to the new eWeLink Smart Home add-on using the **same eWeLink account** as the legacy add-on.
+Log in to the new eWeLink Smart Home app using the **same eWeLink account** as the legacy app.
 
 1. Account login
    ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/login.png)
@@ -102,7 +102,7 @@ Log in to the new eWeLink Smart Home add-on using the **same eWeLink account** a
 
 ### 5.3 Start Data Migration
 
-After logging in, the system will automatically detect whether the same devices exist under both the new and legacy add-ons. If matching devices are found, you will be prompted to migrate data.
+After logging in, the system will automatically detect whether the same devices exist under both the new and legacy apps. If matching devices are found, you will be prompted to migrate data.
 
 You may choose to migrate immediately or defer until the next login.
 
@@ -111,30 +111,30 @@ You may choose to migrate immediately or defer until the next login.
 Click **Migrate Now** to begin.
 During migration:
 
--   Keep Home Assistant and the new add-on running.
+-   Keep Home Assistant and the new app running.
 -   Do not interrupt or close the process.
 -   Home Assistant Core will be restarted once during migration.
 
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/migrate-now.png)
 
-#### 5.3.2 Stop the Legacy Add-on
+#### 5.3.2 Stop the Legacy App
 
-To ensure data integrity, the system will automatically stop the legacy add-on.
+To ensure data integrity, the system will automatically stop the legacy app.
 
-If stopping fails (for example, if the legacy add-on is running in a standalone container), manually stop it and then return to the new add-on page and click **Stopped, Continue Migration**.
+If stopping fails (for example, if the legacy app is running in a standalone container), manually stop it and then return to the new app page and click **Stopped, Continue Migration**.
 
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/stopping-addon.png)
 
 #### 5.3.3 Migration in Progress
 
-Once the legacy add-on has stopped successfully, data migration will begin automatically.
+Once the legacy app has stopped successfully, data migration will begin automatically.
 Home Assistant Core will restart once, typically taking **2–3 minutes**.
 
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/migrate-data.png)
 
 #### 5.3.4 Migration Completed
 
-After a successful migration, devices previously added to Home Assistant via the legacy add-on will appear as **synced** in the new add-on.
+After a successful migration, devices previously added to Home Assistant via the legacy app will appear as **synced** in the new app.
 
 ![](https://raw.githubusercontent.com/iHost-Open-Source-Project/hassio-ihost-addon/refs/heads/master/hassio-ihost-ewelink-smart-home/images/migrate-complete.png)
 
@@ -144,14 +144,14 @@ You may cancel migration at any time before it begins. After cancellation, loggi
 
 #### 5.3.6 Unexpected Exit
 
-If you exit the new add-on UI or restart the add-on during migration, the migration process will **continue uninterrupted**.
+If you exit the new app UI or restart the app during migration, the migration process will **continue uninterrupted**.
 
 ---
 
 ### 5.4 Skip Migration
 
-If you choose not to migrate, devices previously added via the legacy add-on will not be synced.
-When syncing devices in the new add-on, **new devices and entities** will be created in Home Assistant.
+If you choose not to migrate, devices previously added via the legacy app will not be synced.
+When syncing devices in the new app, **new devices and entities** will be created in Home Assistant.
 
 ---
 
@@ -199,7 +199,7 @@ Devices synced to Home Assistant can be viewed under the **MQTT integration**.
 
 ## 8. Logging Out of the eWeLink Account
 
-You can log out from the add-on UI via the account menu in the top-right corner.
+You can log out from the app UI via the account menu in the top-right corner.
 After logging out:
 
 -   Cloud devices will become unavailable in Home Assistant
@@ -226,7 +226,7 @@ The supported device list is as follows:
 | Wi-Fi           | Micro                                                                                                                                                                                                                                | LAN&Cloud                                                                                                                                                       | Switch<br>Network indicator<br>Power-on behavior<br>RSSI                                                                          |
 | Wi-Fi           | AM430E-SW1<br>AM430EV5-B01-GL                                                                                                                                                                                                        | Cloud                                                                                                                                                           | Switch<br>Network indicator<br>Power-on behavior<br>RSSI                                                                          |
 | Wi-Fi           | CKA-DM4-GL(SW1C-MW)                                                                                                                                                                                                                  | Cloud                                                                                                                                                           | Switch<br>Network indicator<br>Power-on behavior<br>RSSI                                                                          |
-| Wi-Fi           | BASICR4<br>MINIR4<br>MINIR4M<br>S40TPB Lite<br>S40TPA Lite<br>CK-BL602-4SW-HS(138)<br>BL1-S04-01(138)<br>CK-BL602-4SW-HS(138)<br>SN-BL602-S40-01(138)<br>CK-BL602-4SW-AY(138)<br>SN-ESP32D0-MINIR4-01(138)<br>CK-ESP32C3-SW-MT2(138) | LAN&Cloud                                                                                                                                                       | Switch<br>Network indicator<br>Power-on behavior<br>RSSI                                                                          |
+| Wi-Fi           | BASICR4<br>MINIR4<br>MINIR4M<br>S40TPB Lite<br>S40TPA Lite<br>CK-BL602-4SW-HS(138)<br>BL1-S04-01(138)<br>SN-BL602-S40-01(138)<br>CK-BL602-4SW-AY(138)<br>SN-ESP32D0-MINIR4-01(138)<br>CK-ESP32C3-SW-MT2(138) | LAN&Cloud                                                                                                                                                       | Switch<br>Network indicator<br>Power-on behavior<br>RSSI<br>Relay separate mode(Note: Only **MINIR4/MINIR4M/SN-ESP32D0-MINIR4-01(138)/CK-ESP32C3-SW-MT2(138)** with firmware version **v1.0.0 or later** support this feature)                                                                         |
 | Zigbee          | S26R2ZB<br>S31 Lite zb<br>BASICZBR3<br>TRETAKT plug smart (IKEA)<br>E2204 (IKEA)                                                                                                                                                     | LAN or Cloud<br>(Devices under ZBBridge-P are controlled over the local area network (LAN)),<br>while devices under ZBBridge-U are controlled via the cloud.)   | Switch<br>RSSI                                                                                                                    |
 | Zigbee          | S40ZB Lite<br>SN-CC2652P-SW-01(7005)                                                                                                                                                                                                 | LAN or Cloud<br> (Devices under ZBBridge-P are controlled over the local area network (LAN)),<br> while devices under ZBBridge-U are controlled via the cloud.) | Switch<br>RSSI                                                                                                                    |
 | Zigbee          | KX-SPLUG-ZB<br>CK-TLSR8258-MSW-03(7020)<br>CK-TL8656F512-BL0937(7020)<br>CK-TLSR8258-MSW-02(7020)<br>CK-TL8656F512-Z123PL0O-01(7020)<br>CK-BL702-SWP-01(7020)                                                                        | LAN or Cloud<br> (Devices under ZBBridge-P are controlled over the local area network (LAN)),<br> while devices under ZBBridge-U are controlled via the cloud.) | Switch<br>Network indicator<br>Power-on behavior<br>Inching settings<br>Voltage<br>Current<br>Power<br>Energy consumption<br>RSSI |
