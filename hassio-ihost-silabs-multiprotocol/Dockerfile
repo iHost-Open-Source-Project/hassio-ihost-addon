@@ -227,6 +227,9 @@ RUN \
         -DOTBR_DBUS=OFF \
         -DOT_THREAD_VERSION=1.4 \
         -DOT_MULTIPAN_RCP=ON \
+        -DOTBR_TREL=ON \
+        -DOT_DNSSD_SERVER=OFF \
+        -DOTBR_DNS_UPSTREAM_QUERY=ON \
         -DCPCD_SOURCE_DIR=$CPCD_DIR \
         -DOT_POSIX_RCP_VENDOR_BUS=ON \
         -DOT_POSIX_CONFIG_RCP_VENDOR_DEPS_PACKAGE=/usr/src/protocol/openthread/platform-abstraction/posix/posix_vendor_rcp.cmake \
@@ -236,6 +239,7 @@ RUN \
         -DOT_LINK_RAW=1 \
         -DOTBR_VENDOR_NAME="OpenThread" \
         -DOTBR_PRODUCT_NAME="Silicon Labs Multiprotocol" \
+        -DOTBR_NAT64=ON \
         -DOTBR_WEB=ON \
         -DOTBR_BORDER_ROUTING=ON \
         -DOTBR_REST=ON \
