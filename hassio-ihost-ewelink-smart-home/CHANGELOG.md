@@ -2,6 +2,17 @@
 
 This add-on is designed to replace the legacy **eWeLink Smart Home** add-on, enabling devices under your eWeLink account to be synchronized with **Home Assistant** and controlled via either the local network or the cloud. The legacy eWeLink Smart Home add-on will no longer be maintained or updated, as some of its entity implementations rely on deprecated methods. The new project delivers more robust, future-oriented device support.
 
+## 1.2.2
+
+### Added
+
+* Added support for more devices: CK-ESP8285-TCTH-01(127)/CK-BL602-TC-01(127)
+
+### Fixed
+
+* Fixed an issue where the migration process could occasionally get stuck.
+* Fixed an intermittent issue where devices could report their status normally but could not be controlled.
+
 ## 1.2.1
 
 ### Changed
