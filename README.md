@@ -1,7 +1,7 @@
 # Hassio iHost Add-ons
 
 ## About
-This repository contains a set of Home Assistant add-ons developed specifically for **SONOFF iHost**.
+This repository contains a set of Home Assistant add-ons developed specifically for **SONOFF**.
 
 ## Installation
 1. Go to the Add-on Store → Click the **More** button (⋮) in the upper-right corner → Select **Repositories**  
