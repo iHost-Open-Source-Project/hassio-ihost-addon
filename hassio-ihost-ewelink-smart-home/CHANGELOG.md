@@ -2,6 +2,17 @@
 
 This add-on is designed to replace the legacy **eWeLink Smart Home** add-on, enabling devices under your eWeLink account to be synchronized with **Home Assistant** and controlled via either the local network or the cloud. The legacy eWeLink Smart Home add-on will no longer be maintained or updated, as some of its entity implementations rely on deprecated methods. The new project delivers more robust, future-oriented device support.
 
+## 1.2.3
+
+### Added
+
+* Added validation for the MQTT broker service address. The Add-on will no longer start if the MQTT broker address is invalid.
+
+### Fixed
+
+* Fixed an issue where some devices reported incorrect temperature values.
+* Fixed an issue where the target temperature could not be controlled on some devices.
+
 ## 1.2.2
 
 ### Added
