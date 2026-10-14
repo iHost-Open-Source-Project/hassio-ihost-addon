@@ -100,6 +100,7 @@ Add-on configuration:
 | otbr_enable        | Enable OpenThread BorderRouter                         |
 | otbr_log_level     | Set the log level of the OpenThread BorderRouter Agent     |
 | otbr_firewall      | Enable OpenThread Border Router firewall to block unnecessary traffic |
+| otbr_nat64         | Enable OpenThread Border Router NAT64 to allow Thread devices to access IPv4 addresses |
 
 ## Architecture
 
