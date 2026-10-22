@@ -1,0 +1,160 @@
+blueprint:
+  name: Confirmed relay-pair cover commands
+  description: >-
+    Open, close or stop one cover driven by two distinct switch entities.
+    Requires suitable hardware/firmware interlocking and a device-side runtime
+    limit. HA state confirmation is not proof of de-energised motor wiring.
+    Use one controller per pair; route all HA writers through it.
+  domain: script
+  homeassistant:
+    min_version: 2026.10.0
+  input:
+    open_relay:
+      name: Opening relay
+      selector:
+        entity:
+          filter:
+            domain: switch
+    close_relay:
+      name: Closing relay
+      selector:
+        entity:
+          filter:
+            domain: switch
+    runtime_seconds:
+      name: Maximum powered runtime (seconds)
+      description: Set from the motor/installation specification; no universal default.
+      selector:
+        number:
+          min: 1
+          max: 180
+          step: 1
+          mode: box
+    off_timeout_seconds:
+      name: State confirmation timeout (seconds)
+      default: 10
+      selector:
+        number:
+          min: 1
+          max: 30
+          mode: box
+    reversal_pause_seconds:
+      name: Minimum pause after confirmed OFF (seconds)
+      default: 1
+      selector:
+        number:
+          min: 0.25
+          max: 10
+          step: 0.25
+          mode: box
+    blocked_actors:
+      name: Other scripts/automations which must be idle
+      description: >-
+        Optional compatibility guard during migration. Missing actors are not
+        treated as idle. This is not a lock against independent relay writers.
+      default: []
+      selector:
+        entity:
+          filter:
+            domain: [script, automation]
+          multiple: true
+fields:
+  command:
+    name: Command
+    required: true
+    selector:
+      select:
+        options: [open, close, stop]
+mode: restart
+variables:
+  opening: !input open_relay
+  closing: !input close_relay
+  limit: !input runtime_seconds
+  confirm_timeout: !input off_timeout_seconds
+  reversal_pause: !input reversal_pause_seconds
+  actors: !input blocked_actors
+sequence:
+  - if: "{{ command | default('') not in ['open', 'close', 'stop'] }}"
+    then:
+      - stop: Unknown command. Use open, close or stop.
+        error: true
+  # A new request cancels the previous run and starts by requesting both OFF.
+  - repeat:
+      for_each: "{{ [opening, closing] | unique | list }}"
+      sequence:
+        - action: switch.turn_off
+          target:
+            entity_id: "{{ repeat.item }}"
+          continue_on_error: true
+  - wait_template: "{{ is_state(opening, 'off') and is_state(closing, 'off') }}"
+    timeout:
+      seconds: "{{ confirm_timeout }}"
+    continue_on_timeout: true
+  - if: "{{ not wait.completed }}"
+    then:
+      - stop: OFF was not confirmed for both relays; movement refused.
+        error: true
+  - if: "{{ command == 'stop' }}"
+    then:
+      - stop: Both relays report OFF.
+  - if: >-
+      {{ opening == closing or not opening.startswith('switch.')
+         or not closing.startswith('switch.') or not is_number(limit)
+         or not (1 <= limit | float <= 180)
+         or not is_number(reversal_pause)
+         or not (0.25 <= reversal_pause | float <= 10)
+         or not is_number(confirm_timeout)
+         or not (1 <= confirm_timeout | float <= 30) }}
+    then:
+      - stop: Invalid relay pair or timing configuration; movement refused.
+        error: true
+  - delay:
+      seconds: "{{ reversal_pause }}"
+  - variables:
+      actors_idle: >-
+        {% set ns = namespace(ok=true) %}
+        {% for entity in actors %}
+          {% if not has_value(entity) or state_attr(entity, 'current') is none
+                or state_attr(entity, 'current') | int(-1) != 0 %}
+            {% set ns.ok = false %}
+          {% endif %}
+        {% endfor %}
+        {{ ns.ok }}
+  - if: "{{ not actors_idle or not is_state(opening, 'off') or not is_state(closing, 'off') }}"
+    then:
+      - stop: Another writer is active or OFF confirmation was lost; movement refused.
+        error: true
+  - variables:
+      selected: "{{ opening if command == 'open' else closing }}"
+      opposite: "{{ closing if command == 'open' else opening }}"
+      drive_started_at: "{{ as_timestamp(now()) }}"
+  - action: switch.turn_on
+    target:
+      entity_id: "{{ selected }}"
+    continue_on_error: true
+  # The clock starts at the ON request, not after acknowledgement.
+  # Opposite ON/unknown/unavailable, selected unknown/unavailable, or an
+  # external Stop ends this wait early. Delayed ON acknowledgements cannot
+  # extend the requested runtime. Device-side timing remains necessary.
+  - wait_template: >-
+      {{ not is_state(opposite, 'off') or not has_value(selected)
+         or (is_state(selected, 'off') and
+             as_timestamp(states[selected].last_updated) >= drive_started_at | float) }}
+    timeout:
+      seconds: "{{ [0, limit | float - (as_timestamp(now()) - drive_started_at | float)] | max }}"
+    continue_on_timeout: true
+  - repeat:
+      for_each: "{{ [opening, closing] }}"
+      sequence:
+        - action: switch.turn_off
+          target:
+            entity_id: "{{ repeat.item }}"
+          continue_on_error: true
+  - wait_template: "{{ is_state(opening, 'off') and is_state(closing, 'off') }}"
+    timeout:
+      seconds: "{{ confirm_timeout }}"
+    continue_on_timeout: true
+  - if: "{{ not wait.completed }}"
+    then:
+      - stop: Final OFF not confirmed; check the device and physical state.
+        error: true

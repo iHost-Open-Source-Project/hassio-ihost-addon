@@ -1,0 +1,82 @@
+blueprint:
+  name: Relay-pair cover OFF watchdog
+  description: >-
+    Companion for the confirmed relay-pair controller. Requests OFF on HA
+    startup, opposite directions ON, loss of either relay, or excessive runtime.
+    Never energises a relay. Not a substitute for hardware interlocking or a
+    device-side timer: HA cannot switch a disconnected device OFF.
+  domain: automation
+  homeassistant:
+    min_version: 2026.10.0
+  input:
+    open_relay:
+      name: Opening relay
+      selector:
+        entity:
+          filter:
+            domain: switch
+    close_relay:
+      name: Closing relay
+      selector:
+        entity:
+          filter:
+            domain: switch
+    controller:
+      name: Controller script for this pair
+      selector:
+        entity:
+          filter:
+            domain: script
+    runtime_seconds:
+      name: Maximum powered runtime (seconds)
+      selector:
+        number:
+          min: 1
+          max: 180
+          step: 1
+          mode: box
+variables:
+  opening: !input open_relay
+  closing: !input close_relay
+  controller: !input controller
+  limit: !input runtime_seconds
+triggers:
+  - trigger: homeassistant
+    event: start
+    id: startup
+  - trigger: state
+    entity_id:
+      - !input open_relay
+      - !input close_relay
+    id: state
+  - trigger: time_pattern
+    seconds: /5
+    id: timer
+conditions:
+  - condition: template
+    value_template: >-
+      {% set ns = namespace(unsafe=trigger.id == 'startup'
+          or opening == closing or not has_value(opening)
+          or not has_value(closing)
+          or (is_state(opening, 'on') and is_state(closing, 'on'))) %}
+      {% for entity in [opening, closing] %}
+        {% if is_state(entity, 'on') and
+              as_timestamp(now()) - as_timestamp(states[entity].last_changed) >= limit | float(0) %}
+          {% set ns.unsafe = true %}
+        {% endif %}
+      {% endfor %}
+      {{ ns.unsafe }}
+actions:
+  - action: script.turn_off
+    target:
+      entity_id: !input controller
+    continue_on_error: true
+  - repeat:
+      for_each: "{{ [opening, closing] | unique | list }}"
+      sequence:
+        - action: switch.turn_off
+          target:
+            entity_id: "{{ repeat.item }}"
+          continue_on_error: true
+mode: single
+max_exceeded: silent

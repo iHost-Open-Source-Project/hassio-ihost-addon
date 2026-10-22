@@ -1,0 +1,58 @@
+# Synthetic example. Replace every example entity and choose verified timings.
+# Copy the two blueprints to the paths below, then include this as a HA package.
+script:
+  example_shade_controller:
+    alias: Example shade controller
+    use_blueprint:
+      path: ewelink/confirmed-relay-cover.yaml
+      input:
+        open_relay: switch.example_shade_up
+        close_relay: switch.example_shade_down
+        runtime_seconds: 40
+        reversal_pause_seconds: 1
+        off_timeout_seconds: 10
+        blocked_actors: []
+automation:
+  - id: example_shade_off_watchdog
+    alias: Example shade OFF watchdog
+    use_blueprint:
+      path: ewelink/relay-cover-watchdog.yaml
+      input:
+        open_relay: switch.example_shade_up
+        close_relay: switch.example_shade_down
+        controller: script.example_shade_controller
+        runtime_seconds: 40
+template:
+  - cover:
+      - name: Example shade
+        unique_id: example_relay_shade
+        device_class: shutter
+        availability: >-
+          {{ states('switch.example_shade_up') in ['on', 'off']
+             and states('switch.example_shade_down') in ['on', 'off']
+             and not (is_state('switch.example_shade_up', 'on')
+                      and is_state('switch.example_shade_down', 'on')) }}
+        # Relay feedback indicates requested direction only, not motor motion.
+        # With neither end-stop feedback nor position sensing, idle is unknown.
+        state: >-
+          {{ 'opening' if is_state('switch.example_shade_up', 'on') else
+             'closing' if is_state('switch.example_shade_down', 'on') else none }}
+        open_cover:
+          action: script.example_shade_controller
+          data:
+            command: open
+        close_cover:
+          action: script.example_shade_controller
+          data:
+            command: close
+        stop_cover:
+          action: script.example_shade_controller
+          data:
+            command: stop
+# A standard cover group works after a controller/cover is configured per pair.
+# Add other configured covers to entities. Do not invent measured positions.
+cover:
+  - platform: group
+    name: Example shade group
+    entities:
+      - cover.example_shade

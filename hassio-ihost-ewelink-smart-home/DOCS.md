@@ -195,6 +195,14 @@ You may also click **Sync All** in the top-right corner to add all supported dev
 
 Devices synced to Home Assistant can be viewed under the **MQTT integration**.
 
+### Relay-pair cover example
+
+If your motor installation exposes separate direction switches instead of a
+native cover, see the optional [relay-pair cover example](examples/relay-cover/README.md).
+It uses standard HA Template covers/groups with configurable OFF confirmation,
+reversal pause and runtime limits. Hardware interlocking and device-side
+limits are required; software state feedback is not proof of a physical stop.
+
 ---
 
 ## 8. Logging Out of the eWeLink Account
