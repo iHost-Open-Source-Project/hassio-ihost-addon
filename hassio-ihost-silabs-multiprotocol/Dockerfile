@@ -1,6 +1,6 @@
 ARG BUILD_FROM
 ARG BUILD_ARCH
-FROM --platform=linux/amd64 debian:bullseye AS cross-builder-base
+FROM --platform=linux/amd64 debian:trixie AS cross-builder-base
 
 ENV \
     LANG="C.UTF-8" \
@@ -76,7 +76,7 @@ RUN \
     && apt-get install -y --no-install-recommends \
        cmake \
        "libmbedtls-dev:${DEBIAN_ARCH}" \
-       "libmbedtls12:${DEBIAN_ARCH}" \
+       "libmbedtls21:${DEBIAN_ARCH}" \
     && git clone --depth 1 -b "${CPCD_VERSION}" \
        https://github.com/SiliconLabs/cpc-daemon.git \
     && mkdir $CPCD_DIR/build && cd $CPCD_DIR/build \
@@ -98,7 +98,7 @@ RUN \
        python3 \
        python3-jinja2 \
        python3-pip \
-       openjdk-17-jre \
+       openjdk-21-jre \
        git-lfs \
        unzip \
     && curl -O https://www.silabs.com/documents/login/software/slc_cli_linux.zip \
@@ -151,7 +151,7 @@ RUN \
     set -x \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-       libmbedtls12 \
+       libmbedtls21 \
        socat \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /usr/src/*
@@ -205,14 +205,15 @@ RUN \
        python3-cryptography \
        python3-yarl \
        lsb-release \
-       netcat \
+       netcat-openbsd \
        sudo \
     && cd ot-br-posix \
     && ln -s ../../../openthread/ third_party/openthread/repo \
     && chmod +x ./script/* \
     && RELEASE=1 REFERENCE_DEVICE=1 BACKBONE_ROUTER=1 NAT64=1 DNS64=1 ./script/bootstrap \
     # Mimic rt_tables_install \
-    && echo "88 openthread" >> /etc/iproute2/rt_tables \
+    && mkdir -p /etc/iproute2/rt_tables.d \
+    && echo "88 openthread" > /etc/iproute2/rt_tables.d/openthread.conf \
     # Mimic otbr_install \
     && (./script/cmake-build \
         -DBUILD_TESTING=OFF \
