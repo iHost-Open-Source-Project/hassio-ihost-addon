@@ -94,8 +94,12 @@ if bashio::config.true 'otbr_firewall'; then
 else
     # Make sure ip6tables (as used by Docker) allow IP forwarding
     ip6tables -P FORWARD ACCEPT
-    # HAOS 9.3 and earlier (for 9.4 accept is the default so this won't do anything)
-    ip6tables-legacy -P FORWARD ACCEPT
+    # HAOS 9.3 and earlier (for 9.4 accept is the default so this won't do anything).
+    # Skip when the legacy IPv6 filter table is not available (HAOS 18 and later),
+    # otherwise the command fails and otbr-agent never starts.
+    if ip6tables-legacy -L FORWARD >/dev/null 2>&1; then
+        ip6tables-legacy -P FORWARD ACCEPT
+    fi
 fi
 
 otbr_rest_listen="::"
