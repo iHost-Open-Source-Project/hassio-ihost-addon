@@ -8,6 +8,53 @@ SONOFF Dongle Flasher supports online firmware flashing for the iHost MG21 chip 
 
 In addition to the SONOFF Dongle Flasher app, we also provide a [container version](https://hub.docker.com/r/ewelink/sonoff-dongle-flasher).
 
+### Updated firmware catalogue
+
+The application is reused from the published SONOFF 1.3.4 image; its flashing logic is unchanged. The base is Home Assistant Alpine 3.24 for amd64/aarch64 and 3.22 for armv7. Home Assistant no longer publishes newer ARMv7 base images.
+
+The build combines the [original firmware catalogue](https://github.com/iHost-Open-Source-Project/hassio-ihost-sonoff-dongle-flasher/tree/136ab2fe736a1e5e9c880c2334d2c95adf1e2f25/firmware-build) with [SONOFF's third-party firmware catalogue](https://github.com/SONOFF-Technologies/sonoff-dongle-series-open-source-firmware/tree/aa9dafc12db5f7eee01593f083d679d7d1ef31f0). Firmware is downloaded at build time and served only on loopback at runtime. Third-party binaries are verified against the catalogue's SHA-256 hashes and sizes. No firmware is flashed automatically.
+
+| Device | Stable Zigbee coordinator | Stable OpenThread | Beta Zigbee / OpenThread |
+| --- | --- | --- | --- |
+| ZBDongle-E | 8.2.2.0, 115200 baud | 2.7.2.0, 921600 baud | 9.1.2, 115200 / 3.1.2, 460800 |
+| Dongle-PMG24 | 8.2.2.0, 460800 baud | 2.7.2.0, 460800 baud | 9.1.2, 460800 / 3.1.2, 460800 |
+| Dongle-LMG21 | 8.2.2.0, 115200 baud | 2.7.2.0, 460800 baud | 9.1.2, 115200 / 3.1.2, 460800 |
+| Dongle-M | 8.2.2.0, 115200 baud | 2.7.2.0, 115200 baud | 9.1.2, 460800 / 3.1.2, 460800 |
+
+Stable firmware comes from [v2025.6.2-update1](https://github.com/Nerivec/silabs-firmware-builder/releases/tag/v2025.6.2-update1). Beta firmware comes from [v2026.6.2-pre1](https://github.com/Nerivec/silabs-firmware-builder/releases/tag/v2026.6.2-pre1); it is not a stable release. Zigbee router firmware is also included, at 115200 baud. The listed coordinator and Thread builds use software flow control, except Dongle-M beta builds, which use no flow control. Beta router builds also use no flow control. None uses hardware RTS/CTS.
+
+Back up your Zigbee network before flashing. Stop ZHA, Zigbee2MQTT or OTBR first, and update the consumer's baud rate after flashing if it changes. Confirm that the consumer supports the selected firmware; downgrading or changing protocols may require restoring a network backup or pairing devices again. Existing firmware choices and the iHost CUBE reset firmware are retained, but this does not guarantee that a downgrade preserves network state.
+
+Installation builds the add-on locally and needs internet access; subsequent catalogue access and firmware downloads use the bundled files. The add-on slug and configuration paths are unchanged.
+
+### Reading and applying serial settings
+
+After a firmware is selected, the upgrade target displays its baud rate and flow control. The firmware choice lists remain compact. The final confirmation and success dialogs repeat the target settings. If the source does not specify flow control, the page says so rather than assuming a value. Custom uploads require the firmware vendor's instructions.
+
+For example, the official PMG24 Zigbee 8.0.2 firmware uses 115200 baud, while the included PMG24 Zigbee 9.1.2 coordinator build uses 460800 baud with software flow control:
+
+1. Back up your Zigbee network and stop the integration using the adapter.
+2. Flash the target firmware. Do not apply the new integration settings while the old firmware is still installed.
+3. Stop the flasher after flashing completes.
+4. In ZHA, open **Settings > Devices & services > ZHA > Configure > Change the current adapter's settings**. Set the serial speed and flow control for the newly installed firmware. For Zigbee2MQTT or OTBR, update the equivalent serial settings.
+5. Reconnect the integration. Do not erase the network or re-pair devices to resolve a serial connection error.
+
+The flasher does not update integration settings automatically. Firmware versions with four numeric components, such as OpenThread 2.7.2.0, are ordered numerically alongside three-component versions such as 2.4.4.
+
+### Firmware provenance and identification limits
+
+The original SONOFF catalogue currently provides official Zigbee 8.0.2 firmware for ZBDongle-E and Dongle-PMG24. The newer binaries are downloaded directly from SONOFF's `sonoff-dongle-series-open-source-firmware` repository, which mirrors Nerivec's board-specific builds. The add-on does not compile the Silicon Labs SDK or run a separate Nerivec service.
+
+The `beta` catalogue flag describes Nerivec's `v2026.6.2-pre1` firmware build release, not Silicon Labs' Zigbee 9.1.2 stack release. Restricting the catalogue to SONOFF's original official builds would remove the newer 9.1.2 choices.
+
+The firmware probe negotiates the NCP's EZSP protocol without the old coordinator-only upper limit of 18. Zigbee 9.1.2 uses EZSP 19; its version-query and bootloader-launch command layouts remain compatible with the bundled codec. The minimum protocol, Zigbee stack type and response validation remain enforced. Compatible newer responses are attempted, but this is not a claim of full coordinator support for every future protocol. Flashing still uses the separate Gecko bootloader protocol.
+
+USB ZBDongle-E, Dongle-LMG21 and Dongle-PMG24 identification first requests OpenThread and Zigbee versions at the requested baud rate and the supported 115200, 230400, 460800 and 921600 rates. Successful active identification does not need a hardware reset or startup banner. Official `SL-OPENTHREAD/` and community `OPENTHREAD/` version strings are recognized, including fragmented replies, only after checksum validation. If active queries do not identify the firmware, startup detection is armed before the board-specific reset; the retained upstream path then identifies MultiPAN, router and older NCP firmware and reads its version. Bootloader recovery and iHost GPIO-specific paths remain available.
+
+Before probing or resetting a port, the app checks whether the core OpenThread Border Router app is running on that same device, including a by-id alias. A matching owner produces the serial-port-in-use error; a different Zigbee dongle is not blocked. Stop OTBR manually before connecting the flasher to its adapter. The flasher does not stop or reconfigure OTBR automatically. A completed identification progress bar is not proof that firmware was recognized.
+
+The inherited, pinned application dependencies still report npm audit findings, including a critical finding. This update does not remediate those application dependencies. The inherited application can also write HA authentication tokens to its logs; do not publish unredacted logs. Keep the interface behind Home Assistant ingress; do not expose port 8324 to untrusted networks.
+
 ## 2. Prerequisite
 
 Before using the app, please make sure the serial port is not in use (it is commonly occupied by services like Zigbee2MQTT or ZHA).
